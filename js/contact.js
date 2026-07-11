@@ -125,7 +125,7 @@
         throw new Error('Submission failed');
       }
     } catch (err) {
-      showStatus('error', "Something went wrong sending your message. Please try again, or email us directly at ivorybloomatelier@gmail.com.");
+      showStatus('error', "Something went wrong sending your message. Please try again, or email us directly at michelleinbox99@gmail.com.");
     } finally {
       setLoading(false);
     }

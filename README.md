@@ -85,7 +85,7 @@ theme palettes are defined in that file.
 1. Upload ALL files/folders to the web root of ivoryandbloom.shop (keep existing
    .htaccess).
 2. **Contact form:** create a free form at formspree.io using
-   ivorybloomatelier@gmail.com, then in js/contact.js replace
+   michelleinbox99@gmail.com, then in js/contact.js replace
    `https://formspree.io/f/YOUR_FORM_ID` with your real endpoint. Until then the
    form shows a friendly error and inquiries are NOT delivered.
 3. Google Search Console → submit https://ivoryandbloom.shop/sitemap.xml
