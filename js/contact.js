@@ -4,11 +4,7 @@
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  // TODO: Replace with your real Formspree form endpoint.
-  // 1. Create a free account at https://formspree.io using ivorybloomatelier@gmail.com
-  // 2. Create a new form and verify the email
-  // 3. Copy the endpoint (looks like https://formspree.io/f/xxxxxxxx) and paste it below
-  const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+  const FORM_ENDPOINT = 'https://formspree.io/f/xzdnpdab';
 
   const submitBtn = document.getElementById('contactSubmitBtn');
   const statusEl = document.getElementById('formStatus');
