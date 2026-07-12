@@ -152,6 +152,22 @@
   </div>
 
   <div class="fq-lower">
+    <div class="container fq-news">
+      <div class="fq-news-copy">
+        <h4>Style Notes from the Atelier</h4>
+        <p>An occasional letter &mdash; new pieces, shade guides, and planning notes for the season you're marrying in. Nothing more.</p>
+      </div>
+      <form id="newsletterForm" class="fq-news-form" novalidate>
+        <div class="hp-field" aria-hidden="true">
+          <label for="nlWebsite">Website</label>
+          <input type="text" id="nlWebsite" name="companyWebsite" tabindex="-1" autocomplete="off">
+        </div>
+        <label class="visually-hidden" for="nlEmail">Email address</label>
+        <input type="email" id="nlEmail" name="email" placeholder="Your email address" autocomplete="email" required>
+        <button type="submit">Subscribe</button>
+        <div class="fq-news-status" id="nlStatus" role="status" aria-live="polite"></div>
+      </form>
+    </div>
     <nav class="fq-nav" aria-label="Footer navigation">
       <a href="../collections/index.html">Collections</a>
       <span aria-hidden="true">&middot;</span>
@@ -200,6 +216,7 @@
     </div>
   </div>
 </footer>
+<script src="../js/newsletter.js" defer></script>
 
 <script src="../js/ui.js"></script>
 

@@ -18,7 +18,13 @@
 }
 .quote-sub { font-size: 14.5px; color: #8A7E74; text-align: center; line-height: 1.7; max-width: 420px; margin: 0 auto 40px; }
 
-.q-group { position: relative; margin-bottom: 30px; }
+.leadtime-note.form-note { margin: -22px 0 30px; }
+
+.q-group { position: relative; margin-bottom: 26px; }
+.q-label {
+  display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--terracotta-rose); font-weight: 500; margin-bottom: 2px;
+}
 .q-input {
   width: 100%; border: none; border-bottom: 1px solid #D8CCC2; background: transparent;
   font-family: var(--font-body); font-size: 15px; color: var(--espresso);
@@ -54,7 +60,7 @@ textarea.q-input { resize: vertical; min-height: 96px; }
 .q-submit.is-loading .spinner { display: inline-block; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-.hp-field { position: absolute; left: -9999px; top: -9999px; opacity: 0; height: 0; width: 0; overflow: hidden; }
+/* .hp-field moved to css/01-base.css (shared with the footer newsletter form) */
 
 .form-status {
   margin-top: 22px; padding: 14px 18px; border-radius: 8px; font-size: 14px;

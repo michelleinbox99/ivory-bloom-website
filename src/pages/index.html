@@ -501,6 +501,10 @@
           </li>
         </ul>
         <a href="#consultation" class="btn-primary">Begin Your Custom Order</a>
+        <div class="leadtime-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.25"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l2.5 2.5"/></svg>
+          Cut after you order &middot; about two weeks in the making
+        </div>
       </div>
     </div>
   </div>
@@ -610,6 +614,10 @@
       <div class="quote-card-form">
         <h3>Tell us about your wedding</h3>
         <p class="quote-sub">Share your colors, your bridal party, and the pieces you're dreaming of &mdash; and we'll reply with a personalized quote for keepsakes made just for you.</p>
+        <div class="leadtime-note centered form-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.25"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l2.5 2.5"/></svg>
+          Every piece is made after you order &middot; about two weeks in the making
+        </div>
 
         <form id="contactForm" novalidate autocomplete="on">
           <!-- Honeypot: hidden from real users, bots tend to fill every field -->
@@ -619,18 +627,21 @@
           </div>
 
           <div class="q-group">
-            <input class="q-input" type="text" id="contactName" name="name" autocomplete="name" required aria-required="true" placeholder="Name" aria-label="Name">
+            <label class="q-label" for="contactName">Name</label>
+            <input class="q-input" type="text" id="contactName" name="name" autocomplete="name" required aria-required="true" placeholder="Your full name">
             <div class="q-error">Please enter your name.</div>
           </div>
 
           <div class="q-group">
-            <input class="q-input" type="email" id="email" name="email" autocomplete="email" required aria-required="true" placeholder="Email" aria-label="Email">
+            <label class="q-label" for="email">Email</label>
+            <input class="q-input" type="email" id="email" name="email" autocomplete="email" required aria-required="true" placeholder="you@example.com">
             <div class="q-error">Please enter a valid email address.</div>
           </div>
 
           <div class="q-group">
-            <select class="q-input q-select" id="service" name="service" required aria-required="true" aria-label="Collection interested in">
-              <option value="" disabled selected>What would you like to discuss?</option>
+            <label class="q-label" for="service">What would you like to discuss?</label>
+            <select class="q-input q-select" id="service" name="service" required aria-required="true">
+              <option value="" disabled selected>Select a collection</option>
               <option value="Bridal Pouches">Bridal Pouches</option>
               <option value="Flower Crowns &amp; Hair Flowers">Flower Crowns &amp; Hair Flowers</option>
               <option value="Flower Girl Sets">Flower Girl Sets</option>
@@ -645,7 +656,8 @@
           </div>
 
           <div class="q-group">
-            <textarea class="q-input" id="message" name="message" rows="4" required aria-required="true" placeholder="Message" aria-label="Message"></textarea>
+            <label class="q-label" for="message">Message</label>
+            <textarea class="q-input" id="message" name="message" rows="4" required aria-required="true" placeholder="Your colors, party size, wedding date&hellip;"></textarea>
             <div class="q-error">Please share a few details about your event.</div>
           </div>
 

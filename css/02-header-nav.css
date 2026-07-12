@@ -77,8 +77,9 @@ header.scrolled .btn-header-cta {
 }
 .btn-header-cta:hover { background: var(--brass); border-color: var(--brass); color: var(--white); }
 
-.menu-toggle { display: none; flex-direction: column; gap: 5px; width: 26px; }
-.menu-toggle span { height: 1.5px; width: 100%; background: var(--white); transition: all 0.3s ease; }
+/* 44x44px touch target (WCAG); the visible bars stay 26px wide, centered */
+.menu-toggle { display: none; flex-direction: column; gap: 5px; width: 44px; height: 44px; align-items: center; justify-content: center; }
+.menu-toggle span { height: 1.5px; width: 26px; background: var(--white); transition: all 0.3s ease; }
 header.scrolled .menu-toggle span { background: var(--espresso); }
 
 

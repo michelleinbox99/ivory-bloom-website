@@ -25,12 +25,7 @@
 }
 .etsy-quiet:hover { color: var(--espresso); border-color: var(--brass); }
 
-/* Lead-time note under the CTA row */
-.leadtime-note {
-  display: flex; align-items: center; gap: 10px;
-  font-size: 13px; color: var(--terracotta-rose); margin-top: 22px;
-}
-.leadtime-note svg { width: 16px; height: 16px; color: var(--brass); flex-shrink: 0; }
+/* .leadtime-note moved to css/04-sections.css (now shared with the homepage) */
 
 /* Compact 3-up lookbook strip (reuses .gallery-item figures, no filters) */
 .lookbook-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }

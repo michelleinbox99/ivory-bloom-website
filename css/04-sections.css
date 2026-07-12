@@ -60,6 +60,14 @@ section { padding: 130px 0; }
 
 .section-cta-row { text-align: center; margin-top: 56px; }
 
+/* Lead-time note near CTAs (shared: homepage + collection pages) */
+.leadtime-note {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--terracotta-rose); margin-top: 22px;
+}
+.leadtime-note svg { width: 16px; height: 16px; color: var(--brass); flex-shrink: 0; }
+.leadtime-note.centered { justify-content: center; }
+
 
 /* ============ ATELIER SHOWCASE (replaces old swatch grid) ============ */
 .atelier-showcase { overflow: hidden; }
