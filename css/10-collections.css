@@ -1,0 +1,38 @@
+/* ============ COLLECTION PAGES ============ */
+
+/* Price / availability line under the page-hero heading */
+.price-line {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 19px; color: var(--terracotta-rose); margin-top: 14px;
+}
+
+/* Signature shade names shown as quiet text chips (names only — satin
+   shades are color-matched from photos, so no on-screen swatches). */
+.shade-chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 26px; padding: 0; }
+.shade-chips li {
+  list-style: none;
+  font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--terracotta-rose); background: var(--linen);
+  padding: 8px 16px; border-radius: 30px;
+}
+
+/* CTA row on a collection page: primary consultation button + quiet Etsy link */
+.collection-cta-row { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; margin-top: 8px; }
+.etsy-quiet {
+  font-size: 12px; letter-spacing: 0.08em; color: var(--terracotta-rose);
+  border-bottom: 1px solid var(--linen); padding-bottom: 3px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.etsy-quiet:hover { color: var(--espresso); border-color: var(--brass); }
+
+/* Lead-time note under the CTA row */
+.leadtime-note {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--terracotta-rose); margin-top: 22px;
+}
+.leadtime-note svg { width: 16px; height: 16px; color: var(--brass); flex-shrink: 0; }
+
+/* Compact 3-up lookbook strip (reuses .gallery-item figures, no filters) */
+.lookbook-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 900px) { .lookbook-strip { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
+@media (max-width: 540px) { .lookbook-strip { grid-template-columns: 1fr; } }

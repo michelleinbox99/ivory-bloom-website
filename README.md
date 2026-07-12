@@ -38,16 +38,17 @@ previously required hand-editing every page (see former ADR-2/ADR-3, resolved be
 ├── index.html             GENERATED — do not edit directly, see src/pages/index.html
 ├── our-craft.html         GENERATED — brand story + process page (Website 2.0 Phase B)
 ├── robots.txt             Crawler rules → points to sitemap
-├── sitemap.xml            All 9 pages, priorities set
+├── sitemap.xml            All 17 pages, priorities set
 ├── src/                   Build-time source — the real place to make edits
 │   ├── partials/          Shared, reusable HTML fragments
-│   │   ├── homepage-header.html   Site header + mobile menu (shared by index + our-craft)
+│   │   ├── homepage-header.html   Site header + mobile menu (all non-journal pages)
 │   │   ├── site-footer.html       Site footer (Instagram strip, nav, baseline)
 │   │   ├── journal-header.html    Journal .jheader (uses {{ROOT}} for relative links)
 │   │   └── journal-footer.html    Journal .jfooter (uses {{ROOT}} for relative links)
 │   └── pages/              One file per deployed page, mirrors the output path
 │       ├── index.html              → builds to /index.html
 │       ├── our-craft.html          → builds to /our-craft.html
+│       ├── collections/*.html      → builds to /collections/*.html
 │       └── journal/*.html          → builds to /journal/*.html
 ├── scripts/
 │   └── build.ps1           Assembles src/pages/ + src/partials/ into the files above
@@ -60,14 +61,18 @@ previously required hand-editing every page (see former ADR-2/ADR-3, resolved be
 │   ├── 05-contact.css      Consultation quote-card + form components
 │   ├── 06-footer.css       Footer (gallery strip, nav, baseline)
 │   ├── 07-responsive.css   Responsive nav/general overrides + focus styles — must load last
-│   ├── 08-craft.css        Our Craft page (solid-header variant, page hero, process steps)
-│   └── 09-journal.css      Journal-only layout (header/hero/grid/article/footer)
+│   ├── 08-craft.css        Solid-header variant, page hero, process steps (our-craft + collections)
+│   ├── 09-journal.css      Journal-only layout (header/hero/grid/article/footer)
+│   └── 10-collections.css  Collection pages (price line, shade chips, CTA row, lookbook strip)
 ├── js/                     Scripts, loaded in order at end of <body> (shared global scope)
 │   ├── ui.js               Header scroll state, mobile menu, scroll reveals, back-to-top
 │   ├── hero.js             Hero slider engine (autoplay, swipe, keyboard, progress dots)
 │   ├── gallery.js          Gallery category filtering
-│   └── contact.js          Form validation, honeypot, Formspree submission
+│   └── inquiry.js          Form validation, honeypot, Formspree submission, ?interest= prefill
 ├── images/                 Optimized JPGs (max 1920px wide, q≈82)
+├── collections/            GENERATED — see src/pages/collections/
+│   └── index.html + 7 collection pages (pouches, crowns, flower girl, ring bearer,
+│       bridesmaid, bouquets & boutonnieres, keepsakes)
 └── journal/                GENERATED — do not edit directly, see src/pages/journal/
     └── index.html, *.html  Journal index (client-side pagination) + six posts
 ```
@@ -144,6 +149,13 @@ fixed as a trust signal. The four palettes it offered are archived in
 in `src/partials/`, then run `powershell -File scripts/build.ps1`.
 
 **Anything specific to one page:**
+- **Add or edit a collection page:** copy an existing file in
+  `src/pages/collections/`, update title/meta/canonical/schema/copy, and give its
+  primary CTA an `?interest=<value>#consultation` link where `<value>` exactly
+  matches an option in the consultation form's dropdown (`src/pages/index.html`) —
+  that's what pre-selects the topic when a visitor arrives from the page
+  (js/inquiry.js). Add the page to `src/pages/collections/index.html`, sitemap.xml,
+  and (if featured) the homepage grid. Rebuild after editing.
 - **Change hero slides:** `src/pages/index.html`, `<article class="hero-slide">`
   blocks. Keep exactly one `<h1>` (slide 1); other slides use
   `<p class="hero-title">`. Rebuild after editing.

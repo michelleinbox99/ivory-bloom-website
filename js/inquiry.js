@@ -1,4 +1,4 @@
-// ===== Contact form: validation, honeypot, and submission =====
+// ===== Inquiry form: validation, honeypot, submission, and product-context prefill =====
 
 (function () {
   const form = document.getElementById('contactForm');
@@ -24,6 +24,20 @@
   const serviceSel = document.getElementById('service');
   if (serviceSel) {
     serviceSel.addEventListener('change', () => serviceSel.classList.toggle('has-value', serviceSel.value !== ''));
+  }
+
+  // Product-context prefill: collection pages link here as ?interest=<option value>,
+  // so a visitor arrives with the topic dropdown already set to the piece they were
+  // just looking at. Only values exactly matching an existing <option> are applied.
+  if (serviceSel) {
+    const interest = new URLSearchParams(location.search).get('interest');
+    if (interest && serviceSel.value === '') {
+      const match = Array.from(serviceSel.options).find(o => o.value === interest);
+      if (match) {
+        serviceSel.value = interest;
+        serviceSel.classList.add('has-value');
+      }
+    }
   }
 
   function setFieldError(field, hasError) {
