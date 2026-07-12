@@ -104,7 +104,11 @@
 .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.12); }
 .btn-dark { background: var(--espresso); color: var(--white); }
 .btn-dark:hover { background: var(--ink-soft); }
-.btn-outline-dark { border: 1px solid var(--espresso); color: var(--espresso); }
+.btn-outline-dark {
+  border: 1px solid var(--espresso); color: var(--espresso); background: transparent;
+  padding: 15px 34px; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
+  border-radius: 2px; transition: all 0.3s ease; display: inline-block;
+}
 .btn-outline-dark:hover { background: var(--espresso); color: var(--white); }
 
 /* ===== Hero navigation: arrows ===== */

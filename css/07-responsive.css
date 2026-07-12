@@ -1,0 +1,17 @@
+/* ============ RESPONSIVE NAV / GENERAL ============
+   Must load LAST: the mobile section-padding override below has equal
+   specificity to the desktop rule in 04-sections.css, so cascade order
+   is what makes it win. (Formerly the tail of 07-customizer.css.) */
+@media (max-width: 860px) {
+  nav.main-nav { display: none; }
+  .menu-toggle { display: flex; }
+  .header-actions .btn-header-cta { display: none; }
+  .container { padding: 0 24px; }
+  section { padding: 84px 0; }
+  .hero-content { padding-bottom: 56px; }
+  .hero-nav { bottom: 22px; }
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--brass); outline-offset: 3px;
+}

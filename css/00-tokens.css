@@ -1,0 +1,46 @@
+/* ============================================================
+   Ivory & Bloom Atelier — Design Tokens
+   Single source of truth for color/type tokens, shared by every
+   stylesheet on the site (homepage css/*.css and css/09-journal.css).
+   Load this file first, before any other stylesheet.
+   ============================================================ */
+
+:root {
+  /* Default accent theme: Blush Pearl & Cocoa */
+  --espresso: #33251E;
+  --parchment: #FAF6F3;
+  --brass: #C59F8B;
+  --terracotta-rose: #9C7360;
+  --moss: #8A9A7E;
+  --linen: #F1E5DE;
+  --white: #FFFFFF;
+  --ink-soft: #4A3B33;
+
+  --font-display: 'Cormorant', serif;
+  --font-body: 'Jost', sans-serif;
+
+  /* Default page width — 09-journal.css overrides this to 1200px to
+     preserve its existing, intentionally narrower measure. */
+  --max-w: 1400px;
+
+  /* Spacing scale (formalized Website 2.0 foundation — not yet required
+     reading for existing rules, which keep their current hard-coded
+     values until they're touched by a redesign pass). */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-7: 96px;
+  --space-8: 130px;
+
+  /* Type scale (same status as the spacing scale above). */
+  --text-xs: 11.5px;
+  --text-sm: 13px;
+  --text-base: 16px;
+  --text-md: 19px;
+  --text-lg: 26px;
+  --text-xl: clamp(28px, 3.6vw, 44px);
+  --text-2xl: clamp(34px, 4.6vw, 56px);
+}

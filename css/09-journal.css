@@ -1,18 +1,15 @@
-/* Ivory & Bloom — Journal styles */
-:root {
-  --espresso:#33251E; --parchment:#FAF6F3; --brass:#C59F8B; --terracotta-rose:#9C7360;
-  --moss:#8A9A7E; --linen:#F1E5DE; --white:#FFFFFF; --ink-soft:#4A3B33;
-  --font-display:'Cormorant',serif; --font-body:'Jost',sans-serif; --max-w:1200px;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:var(--font-body);color:var(--ink-soft);background:var(--white);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
-a{text-decoration:none;color:inherit}
-button{font-family:inherit;cursor:pointer;border:none;background:none}
-.container{max-width:var(--max-w);margin:0 auto;padding:0 32px}
-h1,h2,h3,h4{font-family:var(--font-display);font-weight:500;color:var(--espresso)}
-.eyebrow{font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--brass);font-weight:500;display:block;margin-bottom:14px}
+/* Ivory & Bloom — Journal styles.
+   Loaded after css/00-tokens.css and css/01-base.css, which now supply the
+   shared tokens/resets this file used to duplicate (see README ADR-3).
+   The overrides below preserve the journal's existing, slightly different
+   measure (narrower --max-w, 32px container padding, no heading
+   letter-spacing) exactly as they were before this split. */
+
+:root { --max-w: 1200px; }
+.container { padding: 0 32px; }
+body { line-height: 1.7; }
+h1, h2, h3, h4 { letter-spacing: normal; }
+.eyebrow { margin-bottom: 14px; }
 
 /* Header */
 .jheader{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--linen);padding:16px 0}
@@ -93,4 +90,3 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:500;color:var(--espresso
 .jfooter-nav a:hover{color:var(--terracotta-rose)}
 .jfooter-nav span{color:var(--brass)}
 .jcopy{font-size:11px;color:#A8988B}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation:none!important;scroll-behavior:auto!important}}
