@@ -38,8 +38,9 @@ previously required hand-editing every page (see former ADR-2/ADR-3, resolved be
 ├── index.html             GENERATED — do not edit directly, see src/pages/index.html
 ├── our-craft.html         GENERATED — brand story + process page (Website 2.0 Phase B)
 ├── faq.html               GENERATED — FAQ with FAQPage schema (Website 2.0 Phase D)
+├── 404.html               NOT generated — standalone, absolute-URL page (see Phase F note)
 ├── robots.txt             Crawler rules → points to sitemap
-├── sitemap.xml            All 21 pages, priorities set
+├── sitemap.xml            All 21 pages, priorities + lastmod set
 ├── src/                   Build-time source — the real place to make edits
 │   ├── partials/          Shared, reusable HTML fragments
 │   │   ├── homepage-header.html   Site header + mobile menu (all non-journal pages)
@@ -181,12 +182,30 @@ After any edit under `src/`, always run `powershell -File scripts/build.ps1` bef
 committing — the generated files in the repo root and `journal/` need to stay in
 sync with their source.
 
+## Performance status (Website 2.0 Phase F)
+
+Done: Google Fonts trimmed to the weights actually used (Cormorant 300/400/500 +
+italic 400/500, Jost 300/400/500 — the unused 600s are gone); `images/archive-unused/`
+(~2MB of dead assets) deleted for real; LCP hero image preloaded on the homepage;
+`<lastmod>` on every sitemap URL; custom `404.html` (standalone with absolute URLs,
+since Apache serves it at any failed path — deliberately NOT built from partials,
+whose relative links would break there).
+
+**Deferred — needs tooling not present on this machine (no Node/Python/ImageMagick/
+cwebp):** WebP/AVIF conversion of the JPEG library, and CSS/JS minification+bundling.
+When tooling is available: convert `images/*.jpg` to WebP with JPEG fallback via
+`<picture>`, and minify the numbered CSS files in load order into one bundle (same
+for JS, preserving the documented script order). Until then the site ships unminified
+JPEG-only, exactly as before Phase F.
+
 ## Launch checklist
 
 1. Run `powershell -File scripts/build.ps1` to regenerate the deployed HTML from
    `src/`, then upload ALL files/folders to the web root of ivoryandbloom.shop (keep
    existing .htaccess). Do not upload `src/` or `scripts/` — they're author-time only
    and unused by the live site, though harmless if included.
+1b. Add `ErrorDocument 404 /404.html` to the server's .htaccess so the custom
+   404 page is actually served for broken links.
 2. **Contact form:** create a free form at formspree.io using
    michelleinbox99@gmail.com, then in js/contact.js replace
    `https://formspree.io/f/YOUR_FORM_ID` with your real endpoint. Until then the

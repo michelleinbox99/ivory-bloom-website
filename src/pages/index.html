@@ -74,9 +74,12 @@
 }
 </script>
 
+<!-- Preload the LCP hero image so it starts fetching before layout -->
+<link rel="preload" as="image" href="images/hero-bride-bridesmaids-arch.jpg" imagesrcset="images/hero-bride-bridesmaids-arch-480w.jpg 480w, images/hero-bride-bridesmaids-arch-800w.jpg 800w, images/hero-bride-bridesmaids-arch.jpg 1920w" imagesizes="100vw" fetchpriority="high">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/00-tokens.css">
 <link rel="stylesheet" href="css/01-base.css">
