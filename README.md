@@ -37,8 +37,9 @@ previously required hand-editing every page (see former ADR-2/ADR-3, resolved be
 /
 ├── index.html             GENERATED — do not edit directly, see src/pages/index.html
 ├── our-craft.html         GENERATED — brand story + process page (Website 2.0 Phase B)
+├── faq.html               GENERATED — FAQ with FAQPage schema (Website 2.0 Phase D)
 ├── robots.txt             Crawler rules → points to sitemap
-├── sitemap.xml            All 17 pages, priorities set
+├── sitemap.xml            All 21 pages, priorities set
 ├── src/                   Build-time source — the real place to make edits
 │   ├── partials/          Shared, reusable HTML fragments
 │   │   ├── homepage-header.html   Site header + mobile menu (all non-journal pages)
@@ -48,7 +49,9 @@ previously required hand-editing every page (see former ADR-2/ADR-3, resolved be
 │   └── pages/              One file per deployed page, mirrors the output path
 │       ├── index.html              → builds to /index.html
 │       ├── our-craft.html          → builds to /our-craft.html
+│       ├── faq.html                → builds to /faq.html
 │       ├── collections/*.html      → builds to /collections/*.html
+│       ├── real-weddings/*.html    → builds to /real-weddings/*.html
 │       └── journal/*.html          → builds to /journal/*.html
 ├── scripts/
 │   └── build.ps1           Assembles src/pages/ + src/partials/ into the files above
@@ -62,8 +65,9 @@ previously required hand-editing every page (see former ADR-2/ADR-3, resolved be
 │   ├── 06-footer.css       Footer (gallery strip, nav, baseline)
 │   ├── 07-responsive.css   Responsive nav/general overrides + focus styles — must load last
 │   ├── 08-craft.css        Solid-header variant, page hero, process steps (our-craft + collections)
-│   ├── 09-journal.css      Journal-only layout (header/hero/grid/article/footer)
-│   └── 10-collections.css  Collection pages (price line, shade chips, CTA row, lookbook strip)
+│   ├── 09-journal.css      Journal-only layout (header/hero/grid/article/footer, breadcrumb)
+│   ├── 10-collections.css  Collection pages (price line, shade chips, CTA row, lookbook strip)
+│   └── 11-faq.css          FAQ accordion (native details/summary, no JS)
 ├── js/                     Scripts, loaded in order at end of <body> (shared global scope)
 │   ├── ui.js               Header scroll state, mobile menu, scroll reveals, back-to-top
 │   ├── hero.js             Hero slider engine (autoplay, swipe, keyboard, progress dots)
@@ -73,8 +77,12 @@ previously required hand-editing every page (see former ADR-2/ADR-3, resolved be
 ├── collections/            GENERATED — see src/pages/collections/
 │   └── index.html + 7 collection pages (pouches, crowns, flower girl, ring bearer,
 │       bridesmaid, bouquets & boutonnieres, keepsakes)
+├── real-weddings/          GENERATED — see src/pages/real-weddings/
+│   └── index.html + styled editorial features; framed honestly as editorials until
+│       real client weddings are submitted (the hub invites past brides to share)
 └── journal/                GENERATED — do not edit directly, see src/pages/journal/
-    └── index.html, *.html  Journal index (client-side pagination) + six posts
+    └── index.html, *.html  Journal index + six posts, each with visible breadcrumb
+        + BreadcrumbList schema (Phase D)
 ```
 
 **Website 2.0 Phase B (brand & IA repositioning) is live in this structure:** the

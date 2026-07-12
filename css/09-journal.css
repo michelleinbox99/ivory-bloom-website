@@ -50,6 +50,12 @@ h1, h2, h3, h4 { letter-spacing: normal; }
 .jpage-btn.active{background:var(--espresso);border-color:var(--espresso);color:var(--white)}
 .jpage-btn[disabled]{opacity:.35;pointer-events:none}
 
+/* Breadcrumb */
+.jbreadcrumb{max-width:var(--max-w);margin:0 auto;padding:16px 32px;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#A8988B}
+.jbreadcrumb a{color:var(--terracotta-rose);transition:color .3s}
+.jbreadcrumb a:hover{color:var(--espresso)}
+.jbreadcrumb .sep{margin:0 8px;color:var(--brass)}
+
 /* Article */
 .jarticle-hero{position:relative;height:52vh;min-height:340px;max-height:560px;overflow:hidden}
 .jarticle-hero img{width:100%;height:100%;object-fit:cover}
