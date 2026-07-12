@@ -39,9 +39,10 @@ previously required hand-editing every page (see former ADR-2/ADR-3, resolved be
 ├── about.html             GENERATED — founder story (ProfilePage/Person schema)
 ├── our-craft.html         GENERATED — process + craft page (Website 2.0 Phase B)
 ├── faq.html               GENERATED — FAQ with FAQPage schema (Website 2.0 Phase D)
+├── love-notes.html        GENERATED — reviews & social proof (verbatim Review schema)
 ├── 404.html               NOT generated — standalone, absolute-URL page (see Phase F note)
 ├── robots.txt             Crawler rules → points to sitemap
-├── sitemap.xml            All 22 pages, priorities + lastmod set
+├── sitemap.xml            All 23 pages, priorities + lastmod set
 ├── src/                   Build-time source — the real place to make edits
 │   ├── partials/          Shared, reusable HTML fragments
 │   │   ├── homepage-header.html   Site header + mobile menu (all non-journal pages)
@@ -70,7 +71,8 @@ previously required hand-editing every page (see former ADR-2/ADR-3, resolved be
 │   ├── 09-journal.css      Journal-only layout (header/hero/grid/article/footer, breadcrumb)
 │   ├── 10-collections.css  Collection pages (price line, shade chips, CTA row, lookbook strip)
 │   ├── 11-faq.css          FAQ accordion (native details/summary, no JS)
-│   └── 12-about.css        Our Story page (founder credentials stat row)
+│   ├── 12-about.css        Our Story page (founder credentials stat row)
+│   └── 13-reviews.css      Love Notes page (aggregate band, review cards, gallery)
 ├── js/                     Scripts, loaded in order at end of <body> (shared global scope)
 │   ├── ui.js               Header scroll state, mobile menu, scroll reveals, back-to-top
 │   ├── hero.js             Hero slider engine (autoplay, swipe, keyboard, progress dots)
