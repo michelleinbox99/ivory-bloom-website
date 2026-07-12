@@ -12,6 +12,46 @@
 }
 
 
+/* ============ WHY BRIDES CHOOSE US (4-pillar) ============ */
+.why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 44px; }
+.why-pillar { text-align: center; }
+.why-icon { display: inline-flex; }
+.why-icon svg { width: 34px; height: 34px; color: var(--brass); }
+.why-pillar h3 { font-size: 21px; font-weight: 400; margin: 18px 0 10px; }
+.why-pillar p { font-size: 14px; color: var(--ink-soft); line-height: 1.7; max-width: 250px; margin: 0 auto; }
+@media (max-width: 1100px) { .why-grid { grid-template-columns: repeat(2, 1fr); gap: 50px 40px; } }
+@media (max-width: 600px) { .why-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+
+/* ============ EMAIL CAPTURE (homepage "Style Notes") ============ */
+.email-capture .capture-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+.email-capture h2 { font-size: clamp(30px, 3.6vw, 44px); font-weight: 400; margin-bottom: 16px; }
+.email-capture p { font-size: 16px; color: var(--terracotta-rose); margin-bottom: 30px; }
+.capture-form { position: relative; display: flex; gap: 12px; max-width: 480px; margin: 0 auto; }
+.capture-form input[type="email"] {
+  flex: 1; border: none; border-bottom: 1px solid #CBBBA9; background: transparent;
+  font-family: var(--font-body); font-size: 15px; color: var(--espresso); padding: 13px 2px;
+  transition: border-color 0.3s ease;
+}
+.capture-form input[type="email"]::placeholder { color: #9A8F82; }
+.capture-form input[type="email"]:focus { outline: none; border-color: var(--terracotta-rose); }
+.capture-form button {
+  background: var(--espresso); color: var(--white); padding: 14px 34px; border-radius: 2px;
+  font-size: 11.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500;
+  transition: background 0.3s ease, transform 0.3s ease; white-space: nowrap;
+}
+.capture-form button:hover:not(:disabled) { background: var(--terracotta-rose); transform: translateY(-2px); }
+.capture-form button:disabled { opacity: 0.7; cursor: not-allowed; }
+.capture-status { position: absolute; top: calc(100% + 10px); left: 0; right: 0; font-size: 13px; display: none; }
+.capture-status.show { display: block; }
+.capture-status.success { color: #465B3C; }
+.capture-status.error { color: #8A4137; }
+@media (max-width: 600px) {
+  .capture-form { flex-direction: column; }
+  .capture-status { position: static; margin-top: 12px; }
+}
+
+
 /* ============ SECTION GENERAL ============ */
 section { padding: 130px 0; }
 .section-head { text-align: center; max-width: 640px; margin: 0 auto 68px; }

@@ -72,8 +72,8 @@ previously required hand-editing every page (see former ADR-2/ADR-3, resolved be
 ├── js/                     Scripts, loaded in order at end of <body> (shared global scope)
 │   ├── ui.js               Header scroll state, mobile menu, scroll reveals, back-to-top
 │   ├── hero.js             Hero slider engine (autoplay, swipe, keyboard, progress dots)
-│   ├── gallery.js          Gallery category filtering
-│   └── inquiry.js          Form validation, honeypot, Formspree submission, ?interest= prefill
+│   ├── inquiry.js          Form validation, honeypot, Formspree submission, ?interest= prefill
+│   └── newsletter.js       Drives every form.js-newsletter (footer strip + homepage capture)
 ├── images/                 Optimized JPGs (max 1920px wide, q≈82)
 ├── collections/            GENERATED — see src/pages/collections/
 │   └── index.html + 7 collection pages (pouches, crowns, flower girl, ring bearer,
