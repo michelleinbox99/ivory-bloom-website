@@ -27,6 +27,27 @@
 
 /* .leadtime-note moved to css/04-sections.css (now shared with the homepage) */
 
+/* Conversion reassurance band (shared partial) */
+.collection-assurance .assurance-row {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 20px 48px; margin-bottom: 30px;
+}
+.collection-assurance .assurance-item { display: flex; align-items: center; gap: 12px; }
+.collection-assurance .assurance-item svg { width: 24px; height: 24px; color: var(--brass); flex-shrink: 0; }
+.collection-assurance .assurance-item span {
+  font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500;
+}
+.collection-assurance .assurance-reviews {
+  display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
+  font-size: 15px; color: var(--ink-soft); transition: color 0.3s ease;
+}
+.collection-assurance .assurance-reviews:hover { color: var(--terracotta-rose); }
+.collection-assurance .assurance-stars { color: var(--brass); letter-spacing: 2px; }
+.collection-assurance .assurance-reviews strong { font-family: var(--font-display); font-size: 19px; font-weight: 500; color: var(--espresso); }
+.collection-assurance .assurance-note {
+  text-align: center; max-width: 520px; margin: 14px auto 0;
+  font-size: 13.5px; color: var(--terracotta-rose);
+}
+
 /* Compact 3-up lookbook strip (reuses .gallery-item figures, no filters) */
 .lookbook-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 @media (max-width: 900px) { .lookbook-strip { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
