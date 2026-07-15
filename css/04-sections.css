@@ -119,7 +119,7 @@ section { padding: 130px 0; }
 }
 .showcase-intro-img { position: relative; border-radius: 6px; overflow: hidden; box-shadow: var(--shadow-deep); }
 .showcase-intro-img img {
-  width: 100%; aspect-ratio: 4/5; object-fit: cover;
+  width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover;
   transition: transform 1.2s cubic-bezier(.2,.8,.2,1);
 }
 .showcase-intro-img:hover img { transform: scale(1.06); }
@@ -212,7 +212,7 @@ section { padding: 130px 0; }
 .split-section.reverse .split-img { order: 2; }
 .split-section.reverse .split-copy { order: 1; }
 .split-img { position: relative; border-radius: 3px; overflow: hidden; }
-.split-img img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+.split-img img { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; }
 .split-img .tag-pill {
   position: absolute; bottom: 26px; left: 26px;
   background: rgba(255,255,255,0.94); backdrop-filter: blur(4px);
