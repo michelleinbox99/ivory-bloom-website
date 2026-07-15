@@ -61,27 +61,27 @@ nav.main-nav a:hover::after { width: 100%; }
 .header-actions { display: flex; align-items: center; gap: 20px; }
 
 .header-trust {
-  display: flex; align-items: center; gap: 15px;
+  display: flex; align-items: center; gap: 12px;
   border: 1px solid rgba(255,255,255,0.55);
   border-radius: 3px;
-  background: rgba(0,0,0,0.35);
-  padding: 11px 20px;
+  background: rgba(0,0,0,0.25);
+  padding: 9px 16px;
   transition: border-color 0.35s ease;
   white-space: nowrap;
 }
 header.scrolled .header-trust { border-color: rgba(255,255,255,0.55); }
 .header-trust-item {
   display: flex; flex-direction: column; align-items: center;
-  font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase;
+  font-size: 8px; letter-spacing: 0.05em; text-transform: uppercase;
   color: var(--white); line-height: 1.5;
 }
 header.scrolled .header-trust-item { color: var(--white); }
 .header-trust-item strong {
-  font-family: var(--font-display); font-size: 17px; font-weight: 500;
+  font-family: var(--font-display); font-size: 14px; font-weight: 500;
   letter-spacing: 0; text-transform: none; color: var(--champagne);
 }
-.header-trust-item strong i { font-style: normal; font-size: 12px; color: var(--brass); margin-left: 1px; }
-.header-trust-div { width: 1px; height: 28px; background: rgba(255,255,255,0.3); flex-shrink: 0; }
+.header-trust-item strong i { font-style: normal; font-size: 10px; color: var(--brass); margin-left: 1px; }
+.header-trust-div { width: 1px; height: 22px; background: rgba(255,255,255,0.3); flex-shrink: 0; }
 header.scrolled .header-trust-div { background: rgba(255,255,255,0.3); }
 
 /* Below this, the full nav links + trust badge no longer both fit -
