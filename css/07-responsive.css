@@ -5,7 +5,7 @@
 @media (max-width: 860px) {
   nav.main-nav { display: none; }
   .menu-toggle { display: flex; }
-  .header-actions .btn-header-cta { display: none; }
+  .header-trust { display: none; }
   .container { padding: 0 24px; }
   section { padding: 84px 0; }
   .hero-content { padding-bottom: 200px; }

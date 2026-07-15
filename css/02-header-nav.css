@@ -59,23 +59,37 @@ nav.main-nav a:hover { opacity: 1; }
 nav.main-nav a:hover::after { width: 100%; }
 
 .header-actions { display: flex; align-items: center; gap: 20px; }
-.btn-header-cta {
-  font-size: 11.5px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--white);
-  background: transparent;
+
+.header-trust {
+  display: flex; align-items: center; gap: 10px;
   border: 1px solid rgba(255,255,255,0.55);
-  padding: 12px 26px;
   border-radius: 2px;
-  transition: all 0.35s ease;
+  padding: 9px 14px;
+  transition: border-color 0.35s ease;
   white-space: nowrap;
 }
-header.scrolled .btn-header-cta {
-  color: var(--espresso);
-  border-color: var(--espresso);
+header.scrolled .header-trust { border-color: var(--espresso); }
+.header-trust-item {
+  display: flex; flex-direction: column; align-items: center;
+  font-size: 9px; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--white); line-height: 1.4;
+  transition: color 0.35s ease;
 }
-.btn-header-cta:hover { background: var(--brass); border-color: var(--brass); color: var(--white); }
+header.scrolled .header-trust-item { color: var(--espresso); }
+.header-trust-item strong {
+  font-family: var(--font-display); font-size: 15px; font-weight: 500;
+  letter-spacing: 0; text-transform: none; color: var(--champagne);
+}
+.header-trust-item strong i { font-style: normal; font-size: 10px; color: var(--brass); margin-left: 1px; }
+.header-trust-div { width: 1px; height: 26px; background: rgba(255,255,255,0.3); flex-shrink: 0; }
+header.scrolled .header-trust-div { background: rgba(51,37,30,0.25); }
+
+/* Below this, the full nav links + trust badge no longer both fit -
+   hide the badge here (well above the 860px nav/hamburger switch) so
+   there's no squeeze zone where they'd overlap or overflow. */
+@media (max-width: 1100px) {
+  .header-trust { display: none; }
+}
 
 /* 44x44px touch target (WCAG); the visible bars stay 26px wide, centered */
 .menu-toggle { display: none; flex-direction: column; gap: 5px; width: 44px; height: 44px; align-items: center; justify-content: center; }
