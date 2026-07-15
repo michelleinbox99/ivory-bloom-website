@@ -1,0 +1,70 @@
+/* ============================================================
+   Ivory & Bloom Atelier — Design Tokens
+   Single source of truth for color/type tokens, shared by every
+   stylesheet on the site (homepage css/*.css and css/09-journal.css).
+   Load this file first, before any other stylesheet.
+   ============================================================ */
+
+:root {
+  /* ============ COLORS — Blush Pearl & Cocoa ============ */
+  /* Primary palette */
+  --espresso: #33251E;
+  --ink-soft: #4A3B33;
+  --terracotta-rose: #9C7360;
+  --brass: #C59F8B;
+  --moss: #8A9A7E;
+
+  /* Backgrounds */
+  --white: #FFFFFF;
+  --parchment: #FAF6F3;
+  --linen: #F1E5DE;
+
+  /* Semantic colors — derived from primary palette for consistency */
+  --text-muted: #8A7E74;           /* Softer than ink-soft; for secondary text, captions */
+  --text-lighter: #A8988B;         /* Even lighter; for disabled/inactive states */
+  --border-light: #CBBBA9;         /* Input borders, dividers, subtle separators */
+  --placeholder: #9A8F82;          /* Form input placeholder text */
+  --champagne: #E9C9AE;            /* Golden eyebrow accent (from design system) */
+  --text-light: #F3ECE6;           /* Light text on dark backgrounds (hero sub) */
+  --text-lighter-alt: #F0D9C4;     /* Very light italic text (hero emphasis) */
+  --text-cream: #F0EAE4;           /* Cream text on dark backgrounds (CTA banners) */
+  --bg-soft: #DCCDBF;              /* Soft background for cards, containers */
+  --bg-faint: #FBEEEC;             /* Very light background for subtle sections */
+  --error: #8A4137;                /* Error states, warnings */
+  --success: #465B3C;              /* Success states, confirmations */
+
+  /* Typography */
+  --font-display: 'Cormorant', serif;
+  --font-body: 'Jost', sans-serif;
+
+  /* Layout */
+  --max-w: 1400px;
+  --max-w-journal: 1200px;         /* Narrower measure for journal posts */
+
+  /* ============ SPACING SCALE ============ */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-7: 96px;
+  --space-8: 130px;
+
+  /* ============ TYPE SCALE ============ */
+  --text-xs: 11.5px;
+  --text-sm: 13px;
+  --text-base: 16px;
+  --text-md: 19px;
+  --text-lg: 26px;
+  --text-xl: clamp(28px, 3.6vw, 44px);
+  --text-2xl: clamp(34px, 4.6vw, 56px);
+
+  /* ============ EFFECTS ============ */
+  --shadow-light: 0 2px 8px rgba(51, 37, 30, 0.08);     /* Subtle card shadow */
+  --shadow-medium: 0 8px 24px rgba(51, 37, 30, 0.12);   /* Medium lift (cards, modals) */
+  --shadow-deep: 0 40px 80px rgba(51, 37, 30, 0.14);    /* Hero/showcase shadows */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.6s ease;
+}

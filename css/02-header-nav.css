@@ -59,7 +59,8 @@ nav.main-nav a:hover { opacity: 1; }
 nav.main-nav a:hover::after { width: 100%; }
 
 .header-actions { display: flex; align-items: center; gap: 20px; }
-.btn-etsy {
+
+.btn-header-cta {
   font-size: 11.5px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -71,14 +72,38 @@ nav.main-nav a:hover::after { width: 100%; }
   transition: all 0.35s ease;
   white-space: nowrap;
 }
-header.scrolled .btn-etsy {
-  color: var(--espresso);
-  border-color: var(--espresso);
-}
-.btn-etsy:hover { background: var(--brass); border-color: var(--brass); color: var(--white); }
+header.scrolled .btn-header-cta { color: var(--espresso); border-color: var(--espresso); }
+.btn-header-cta:hover { background: var(--brass); border-color: var(--brass); color: var(--white); }
 
-.menu-toggle { display: none; flex-direction: column; gap: 5px; width: 26px; }
-.menu-toggle span { height: 1.5px; width: 100%; background: var(--white); transition: all 0.3s ease; }
+/* Same design language as .btn-header-cta (border, transparent fill, uppercase
+   11.5px/0.15em type) - width simply grows with the extra content instead of
+   the fixed-width button label. */
+.header-trust {
+  display: flex; align-items: center; gap: 11px;
+  font-size: 10px; letter-spacing: 0.11em; text-transform: uppercase;
+  color: var(--white);
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.55);
+  border-radius: 2px;
+  padding: 12px 21px;
+  transition: color 0.35s ease, border-color 0.35s ease;
+  white-space: nowrap;
+}
+header.scrolled .header-trust { color: var(--espresso); border-color: var(--espresso); }
+.header-trust-item i { font-style: normal; }
+.header-trust-div { width: 1px; height: 12px; background: rgba(255,255,255,0.4); flex-shrink: 0; }
+header.scrolled .header-trust-div { background: rgba(51,37,30,0.3); }
+
+/* Below this, the full nav links + trust badge no longer both fit -
+   hide the badge here (well above the 860px nav/hamburger switch) so
+   there's no squeeze zone where they'd overlap or overflow. */
+@media (max-width: 1260px) {
+  .header-trust { display: none; }
+}
+
+/* 44x44px touch target (WCAG); the visible bars stay 26px wide, centered */
+.menu-toggle { display: none; flex-direction: column; gap: 5px; width: 44px; height: 44px; align-items: center; justify-content: center; }
+.menu-toggle span { height: 1.5px; width: 26px; background: var(--white); transition: all 0.3s ease; }
 header.scrolled .menu-toggle span { background: var(--espresso); }
 
 
@@ -94,5 +119,5 @@ header.scrolled .menu-toggle span { background: var(--espresso); }
 }
 .mobile-menu.open { transform: translateY(0); }
 .mobile-menu a { font-family: var(--font-display); font-size: 30px; color: var(--espresso); }
-.mobile-menu .btn-etsy { margin-top: 14px; color: var(--espresso); border-color: var(--espresso); }
+.mobile-menu .btn-header-cta { margin-top: 14px; color: var(--espresso); border-color: var(--espresso); }
 .mobile-close { position: absolute; top: 30px; right: 30px; color: var(--espresso); font-size: 30px; background: none; }

@@ -1,0 +1,19 @@
+/* ============ ABOUT / OUR STORY PAGE ============ */
+
+/* Founder credentials row — a quiet three-stat band under the page hero */
+.founder-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+  max-width: 880px; margin: 0 auto; text-align: center;
+}
+.founder-stat .stat-num {
+  font-family: var(--font-display); font-style: italic; font-weight: 500;
+  font-size: clamp(38px, 4.4vw, 52px); color: var(--brass); line-height: 1; display: block;
+}
+.founder-stat .stat-label {
+  font-family: var(--font-body); font-size: 12px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--terracotta-rose); margin-top: 12px; display: block;
+}
+.founder-stat .stat-sub { font-size: 13.5px; color: var(--ink-soft); margin-top: 8px; line-height: 1.6; }
+@media (max-width: 700px) {
+  .founder-stats { grid-template-columns: 1fr; gap: 34px; }
+}

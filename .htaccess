@@ -1,0 +1,101 @@
+# ============================================================
+# Ivory & Bloom Atelier — Performance & Security Configuration
+# ============================================================
+
+# Gzip/Brotli compression is handled automatically by Hostinger's edge
+# (hcdn/LiteSpeed) - a manual mod_deflate block here previously conflicted
+# with it (a stray "AddEncoding gzip" line labeled plain-text files as
+# gzip-compressed, which they weren't, causing net::ERR_CONTENT_DECODING_FAILED
+# and a blank page in the browser). Do not re-add compression directives here.
+
+# ============================================================
+# Cache-Control Headers (max-age in seconds)
+# ============================================================
+
+# Default: 1 hour (3600s) for most content
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 hour"
+
+  # Fonts: 1 year (longest cache) — these don't change often
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  AddType font/woff2 .woff2
+
+  # Images: 30 days — moderate cache
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/gif "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+
+  # CSS & JS: 1 day (deploy new versions daily if needed)
+  ExpiresByType text/css "access plus 1 day"
+  ExpiresByType text/javascript "access plus 1 day"
+  ExpiresByType application/javascript "access plus 1 day"
+
+  # HTML: 1 hour (changes frequently with new content)
+  ExpiresByType text/html "access plus 1 hour"
+
+  # API responses: Do not cache
+  ExpiresByType application/json "access plus 0 seconds"
+</IfModule>
+
+# Explicit Cache-Control headers
+<IfModule mod_headers.c>
+  # Static assets: 1 year
+  <FilesMatch "\.(woff|woff2|ttf|otf)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Images: 30 days
+  <FilesMatch "\.(jpg|jpeg|png|gif|ico|webp|svg)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  # CSS & JS: 1 day
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+
+  # HTML: 1 hour (must revalidate)
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# ============================================================
+# Redirect trailing slashes (optional, for consistency)
+# ============================================================
+RewriteEngine On
+RewriteBase /
+
+# Remove trailing slashes from non-file/non-directory requests
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+# ============================================================
+# Security Headers
+# ============================================================
+<IfModule mod_headers.c>
+  # Prevent MIME type sniffing
+  Header set X-Content-Type-Options "nosniff"
+
+  # Enable X-Frame-Options to prevent clickjacking
+  Header set X-Frame-Options "SAMEORIGIN"
+
+  # Enable XSS protection
+  Header set X-XSS-Protection "1; mode=block"
+
+  # Referrer policy
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ============================================================
+# Custom Error Page
+# ============================================================
+ErrorDocument 404 /404.html
