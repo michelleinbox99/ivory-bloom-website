@@ -12,7 +12,7 @@
 .lovenotes-aggregate .agg-link {
   display: inline-block; margin-top: 18px;
   font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brass);
-  border-bottom: 1px solid var(--linen); padding-bottom: 4px; transition: border-color 0.3s ease, color 0.3s ease;
+  border-bottom: 1px solid var(--linen); padding-bottom: 4px; transition: border-color var(--transition-normal), color var(--transition-normal);
 }
 .lovenotes-aggregate .agg-link:hover { color: var(--terracotta-rose); border-color: var(--brass); }
 
@@ -21,7 +21,7 @@
 .review-card {
   background: var(--white); border: 1px solid var(--linen); border-radius: 4px;
   padding: 34px 30px 28px; display: flex; flex-direction: column;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
 }
 .review-card:hover { transform: translateY(-6px); box-shadow: 0 22px 44px rgba(51,37,30,0.09); }
 .review-card .stars { color: var(--brass); font-size: 14px; letter-spacing: 2px; margin-bottom: 16px; }
@@ -35,8 +35,8 @@
   font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta-rose);
   background: var(--linen); padding: 5px 12px; border-radius: 20px;
 }
-.review-source { font-size: 11px; color: #A8988B; margin-top: 14px; }
-.review-source a { color: var(--terracotta-rose); border-bottom: 1px solid var(--linen); }
+.review-source { font-size: 11px; color: var(--text-lighter); margin-top: 14px; }
+.review-source a { color: var(--terracotta-rose); border-bottom: 1px solid var(--linen); transition: border-color var(--transition-normal); }
 .review-source a:hover { border-color: var(--brass); }
 @media (max-width: 900px) { .review-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .review-grid { grid-template-columns: 1fr; } }

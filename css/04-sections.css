@@ -238,7 +238,7 @@ section { padding: 130px 0; }
 .reviews-strip { padding: 64px 0; }
 .reviews-inner { display: flex; align-items: center; gap: 56px; }
 .reviews-rating { flex: 0 0 auto; text-align: center; padding-right: 56px; border-right: 1px solid var(--linen); }
-.reviews-rating-link { display: block; transition: opacity 0.3s ease; }
+.reviews-rating-link { display: block; transition: opacity var(--transition-normal); }
 .reviews-rating-link:hover { opacity: 0.75; }
 .reviews-rating .stars { color: var(--brass); font-size: 15px; letter-spacing: 2px; margin-bottom: 8px; }
 .reviews-rating .rating-num { font-family: var(--font-display); font-size: 42px; color: var(--espresso); line-height: 1; }
