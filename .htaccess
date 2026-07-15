@@ -2,19 +2,11 @@
 # Ivory & Bloom Atelier — Performance & Security Configuration
 # ============================================================
 
-# Enable gzip compression for text assets
-<IfModule mod_deflate.c>
-  AddType application/font-woff2 .woff2
-  AddEncoding gzip .svg .css .js .html .json .xml
-  <IfModule mod_filter.c>
-    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
-    AddOutputFilterByType DEFLATE application/xml application/xhtml+xml application/rss+xml
-    AddOutputFilterByType DEFLATE application/javascript application/x-javascript text/javascript
-    AddOutputFilterByType DEFLATE application/json
-    AddOutputFilterByType DEFLATE image/svg+xml
-    AddOutputFilterByType DEFLATE application/font-woff2
-  </IfModule>
-</IfModule>
+# Gzip/Brotli compression is handled automatically by Hostinger's edge
+# (hcdn/LiteSpeed) - a manual mod_deflate block here previously conflicted
+# with it (a stray "AddEncoding gzip" line labeled plain-text files as
+# gzip-compressed, which they weren't, causing net::ERR_CONTENT_DECODING_FAILED
+# and a blank page in the browser). Do not re-add compression directives here.
 
 # ============================================================
 # Cache-Control Headers (max-age in seconds)
