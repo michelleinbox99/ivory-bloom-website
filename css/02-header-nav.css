@@ -82,14 +82,15 @@ header.scrolled .btn-header-cta { color: var(--espresso); border-color: var(--es
   display: flex; align-items: center; gap: 11px;
   font-size: 10px; letter-spacing: 0.11em; text-transform: uppercase;
   color: var(--white);
-  background: transparent;
+  background: rgba(20,15,12,0.18);
+  backdrop-filter: blur(6px);
   border: 1px solid rgba(255,255,255,0.55);
   border-radius: 2px;
   padding: 12px 21px;
-  transition: color 0.35s ease, border-color 0.35s ease;
+  transition: color 0.35s ease, border-color 0.35s ease, background 0.35s ease;
   white-space: nowrap;
 }
-header.scrolled .header-trust { color: var(--espresso); border-color: var(--espresso); }
+header.scrolled .header-trust { color: var(--espresso); border-color: var(--espresso); background: transparent; backdrop-filter: none; }
 .header-trust-item i { font-style: normal; }
 .header-trust-div { width: 1px; height: 12px; background: rgba(255,255,255,0.4); flex-shrink: 0; }
 header.scrolled .header-trust-div { background: rgba(51,37,30,0.3); }
