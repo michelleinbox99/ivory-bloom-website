@@ -14,22 +14,17 @@ header.scrolled {
 }
 .header-inner { display: flex; align-items: center; justify-content: space-between; }
 .logo {
+  font-family: var(--font-display);
+  font-size: 25px;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  font-weight: 500;
   display: flex;
-  align-items: center;
-  transition: transform 0.3s ease;
+  align-items: baseline;
+  gap: 6px;
+  transition: color 0.4s ease;
 }
-.logo:hover { transform: scale(1.02); }
-.logo-img {
-  height: 60px;
-  width: auto;
-  max-width: 280px;
-  display: block;
-  filter: brightness(0) invert(1);
-  transition: filter 0.4s ease;
-}
-header.scrolled .logo-img {
-  filter: brightness(0) invert(0);
-}
+header.scrolled .logo { color: var(--espresso); }
 .logo .amp { color: var(--brass); font-style: italic; }
 .logo .tag {
   font-size: 10.5px;
