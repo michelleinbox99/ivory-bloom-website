@@ -42,7 +42,7 @@
 
 .hero-eyebrow {
   font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase;
-  color: #E9C9AE; margin-bottom: 20px; display: block;
+  color: var(--champagne); margin-bottom: 20px; display: block;
   opacity: 0; transform: translateY(16px);
 }
 .hero-title {
@@ -51,9 +51,9 @@
   text-shadow: 0 2px 28px rgba(0,0,0,0.22);
   opacity: 0; transform: translateY(20px);
 }
-.hero-title em { font-style: italic; color: #F0D9C4; font-weight: 400; }
+.hero-title em { font-style: italic; color: var(--text-lighter-alt); font-weight: 400; }
 .hero-sub {
-  font-size: 17px; font-weight: 300; max-width: 460px; margin-bottom: 32px; color: #F3ECE6;
+  font-size: 17px; font-weight: 300; max-width: 460px; margin-bottom: 32px; color: var(--text-light);
   text-shadow: 0 1px 14px rgba(0,0,0,0.18);
   opacity: 0; transform: translateY(20px);
 }
@@ -84,7 +84,7 @@
 .btn-primary {
   background: var(--brass); color: var(--white); padding: 15px 34px;
   font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; border-radius: 2px;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition: background var(--transition-normal), transform var(--transition-normal);
   display: inline-block;
 }
 .btn-primary:hover { background: var(--terracotta-rose); transform: translateY(-2px); }
@@ -99,7 +99,7 @@
 .btn-ghost {
   border: 1px solid rgba(255,255,255,0.6); color: var(--white); padding: 15px 34px;
   font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; border-radius: 2px;
-  transition: all 0.3s ease; display: inline-block;
+  transition: all var(--transition-normal); display: inline-block;
 }
 .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.12); }
 .btn-dark { background: var(--espresso); color: var(--white); }
@@ -107,7 +107,7 @@
 .btn-outline-dark {
   border: 1px solid var(--espresso); color: var(--espresso); background: transparent;
   padding: 15px 34px; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
-  border-radius: 2px; transition: all 0.3s ease; display: inline-block;
+  border-radius: 2px; transition: all var(--transition-normal); display: inline-block;
 }
 .btn-outline-dark:hover { background: var(--espresso); color: var(--white); }
 
@@ -118,7 +118,7 @@
   border: 1px solid rgba(255,255,255,0.4); background: rgba(20,15,12,0.18);
   backdrop-filter: blur(6px);
   display: flex; align-items: center; justify-content: center;
-  color: var(--white); transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+  color: var(--white); transition: border-color var(--transition-normal), background var(--transition-normal), transform var(--transition-normal);
 }
 .hero-arrow:hover { border-color: var(--brass); background: rgba(20,15,12,0.36); }
 .hero-arrow svg { width: 18px; height: 18px; }
