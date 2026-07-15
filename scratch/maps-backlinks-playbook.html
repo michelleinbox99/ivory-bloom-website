@@ -1,0 +1,553 @@
+<style>
+:root {
+  --ink: #33251E;
+  --ink-soft: #6B5D53;
+  --paper: #FBF7F2;
+  --paper-raised: #FFFFFF;
+  --rule: #E4D9CC;
+  --rule-strong: #CBB89E;
+  --terracotta: #B8623A;
+  --terracotta-deep: #8A4327;
+  --sage: #6B7F5E;
+  --sage-bg: #EEF1E8;
+  --brass: #A8895A;
+  --shadow: rgba(51, 37, 30, 0.08);
+}
+:root[data-theme="dark"] {
+  --ink: #F3EAE1;
+  --ink-soft: #C7B8AA;
+  --paper: #241C17;
+  --paper-raised: #2E241D;
+  --rule: #43362C;
+  --rule-strong: #5A493B;
+  --terracotta: #E08A5C;
+  --terracotta-deep: #F2A87C;
+  --sage: #9EB48D;
+  --sage-bg: #2C3327;
+  --brass: #C7A876;
+  --shadow: rgba(0, 0, 0, 0.35);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #F3EAE1;
+    --ink-soft: #C7B8AA;
+    --paper: #241C17;
+    --paper-raised: #2E241D;
+    --rule: #43362C;
+    --rule-strong: #5A493B;
+    --terracotta: #E08A5C;
+    --terracotta-deep: #F2A87C;
+    --sage: #9EB48D;
+    --sage-bg: #2C3327;
+    --brass: #C7A876;
+    --shadow: rgba(0, 0, 0, 0.35);
+  }
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+
+.pb-root {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+  line-height: 1.6;
+  padding: 0 0 5rem;
+}
+
+.pb-mast {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 3.5rem 28px 2rem;
+  border-bottom: 1px solid var(--rule);
+}
+.pb-eyebrow {
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--terracotta-deep);
+  font-weight: 600;
+  margin: 0 0 14px;
+}
+.pb-title {
+  font-size: clamp(30px, 4.2vw, 42px);
+  font-weight: 400;
+  margin: 0 0 12px;
+  text-wrap: balance;
+  letter-spacing: -0.01em;
+}
+.pb-title em { font-style: italic; color: var(--terracotta); }
+.pb-dek {
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  font-size: 15px;
+  color: var(--ink-soft);
+  max-width: 54ch;
+  margin: 0 0 22px;
+}
+.pb-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+}
+.pb-nav a {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.pb-nav a:hover, .pb-nav a:focus-visible {
+  border-color: var(--terracotta);
+  color: var(--terracotta-deep);
+  outline: none;
+}
+
+.pb-body { max-width: 760px; margin: 0 auto; padding: 0 28px; }
+
+.pb-part {
+  padding-top: 3rem;
+  scroll-margin-top: 20px;
+}
+.pb-part-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+.pb-part-num {
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--brass);
+  border: 1px solid var(--rule-strong);
+  border-radius: 3px;
+  padding: 3px 8px;
+  flex-shrink: 0;
+}
+.pb-part h2 {
+  font-size: 26px;
+  font-weight: 400;
+  margin: 0;
+}
+.pb-part-sub {
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin: 10px 0 0;
+  max-width: 58ch;
+}
+.pb-meta-row {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  margin: 14px 0 0;
+}
+.pb-meta-row span { display: flex; align-items: center; gap: 6px; }
+.pb-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--sage); flex-shrink: 0; }
+
+.pb-steps { margin: 2rem 0 0; padding: 0; list-style: none; }
+.pb-step {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 16px;
+  padding: 18px 0;
+  border-top: 1px solid var(--rule);
+}
+.pb-step:last-child { border-bottom: 1px solid var(--rule); }
+.pb-check {
+  width: 22px; height: 22px;
+  border: 1.5px solid var(--rule-strong);
+  border-radius: 4px;
+  margin-top: 2px;
+  cursor: pointer;
+  background: var(--paper-raised);
+  position: relative;
+  flex-shrink: 0;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.pb-check:hover { border-color: var(--terracotta); }
+.pb-check.done { background: var(--sage); border-color: var(--sage); }
+.pb-check.done::after {
+  content: '';
+  position: absolute; left: 6px; top: 2px;
+  width: 6px; height: 11px;
+  border: solid var(--paper-raised);
+  border-width: 0 2px 2px 0;
+  transform: rotate(40deg);
+}
+.pb-step-title {
+  font-size: 16.5px;
+  font-weight: 600;
+  margin: 0 0 5px;
+}
+.pb-step.done .pb-step-title { color: var(--ink-soft); text-decoration: line-through; text-decoration-color: var(--rule-strong); }
+.pb-step-body {
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.pb-step-body code {
+  font-family: 'SF Mono', 'Cascadia Code', Consolas, monospace;
+  font-size: 12.5px;
+  background: var(--sage-bg);
+  color: var(--ink);
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+.pb-step-body a { color: var(--terracotta-deep); }
+
+.pb-callout {
+  margin: 1.75rem 0;
+  padding: 16px 18px;
+  border-left: 3px solid var(--terracotta);
+  background: var(--paper-raised);
+  border-radius: 0 8px 8px 0;
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+.pb-callout strong { color: var(--ink); font-weight: 600; }
+
+.pb-directory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+  margin: 1.75rem 0;
+}
+.pb-dcard {
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 14px 16px;
+  box-shadow: 0 1px 2px var(--shadow);
+}
+.pb-dcard-name {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+.pb-dcard-tag {
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin: 0 0 8px;
+}
+.pb-dcard-note {
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.pb-priority {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 1.5rem 0 2.5rem;
+}
+.pb-priority-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 14px;
+  align-items: baseline;
+  padding: 10px 0;
+  border-top: 1px solid var(--rule);
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+}
+.pb-priority-tier {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--terracotta-deep);
+}
+.pb-priority-desc { font-size: 13.5px; color: var(--ink-soft); }
+.pb-priority-desc b { color: var(--ink); font-weight: 600; }
+
+.pb-honest {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--rule-strong);
+}
+.pb-honest h3 {
+  font-size: 19px;
+  font-weight: 400;
+  margin: 0 0 10px;
+}
+.pb-honest p {
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+
+.pb-progress-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 28px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.pb-progress-bar {
+  height: 3px;
+  background: var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 0;
+}
+.pb-progress-fill {
+  height: 100%;
+  background: var(--terracotta);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+@media (max-width: 600px) {
+  .pb-mast { padding: 2.5rem 20px 1.5rem; }
+  .pb-body { padding: 0 20px; }
+  .pb-part-head { flex-wrap: wrap; }
+}
+</style>
+
+<div class="pb-root">
+  <div class="pb-progress-wrap"><div class="pb-progress-bar"><div class="pb-progress-fill" id="pbFill"></div></div></div>
+
+  <header class="pb-mast">
+    <p class="pb-eyebrow">Ivory &amp; Bloom Atelier &middot; Getting Found</p>
+    <h1 class="pb-title">Google Maps <em>&amp;</em> Backlinks Playbook</h1>
+    <p class="pb-dek">Two things a website alone can't do: put you on Google Maps, and earn the outside links that tell Google other people vouch for you. Both need your own accounts and your own outreach &mdash; this is the checklist for doing it.</p>
+    <nav class="pb-nav">
+      <a href="#part1">Part 1 &middot; Google Business Profile</a>
+      <a href="#part2">Part 2 &middot; Backlinks</a>
+      <a href="#priority">Where to start</a>
+      <a href="#honest">A note on keyword data</a>
+    </nav>
+  </header>
+
+  <div class="pb-body">
+
+    <section class="pb-part" id="part1">
+      <div class="pb-part-head">
+        <span class="pb-part-num">PART 1</span>
+        <h2>Get on Google Maps</h2>
+      </div>
+      <p class="pb-part-sub">This is your Google Business Profile &mdash; the free listing that shows your pin on Maps and your card in local search results. It's the single highest-leverage thing on this page.</p>
+      <div class="pb-meta-row">
+        <span><span class="pb-dot"></span>~60&ndash;90 minutes to set up</span>
+        <span><span class="pb-dot"></span>Free</span>
+        <span><span class="pb-dot"></span>Needs a Google account</span>
+      </div>
+
+      <ol class="pb-steps">
+        <li class="pb-step" data-id="p1-1">
+          <div class="pb-check" onclick="pbToggle(this)"></div>
+          <div>
+            <p class="pb-step-title">Start your profile at business.google.com</p>
+            <p class="pb-step-body">Sign in with the Google account you want tied to the business (create a dedicated one if you don't already have a business Gmail). Search for "Ivory &amp; Bloom Atelier" first &mdash; if a profile already exists (sometimes Google auto-creates one from directory data), you'll claim it instead of creating a duplicate.</p>
+          </div>
+        </li>
+        <li class="pb-step" data-id="p1-2">
+          <div class="pb-check" onclick="pbToggle(this)"></div>
+          <div>
+            <p class="pb-step-title">Choose "service-area business," not storefront</p>
+            <p class="pb-step-body">Since Gainesville is where you work from but not a public shop, tell Google you serve customers at their location / by shipping, rather than listing a walk-in storefront. You'll set Gainesville, VA as your base and can list the wider area you're willing to serve (e.g. Northern Virginia, or nationwide since you ship).</p>
+          </div>
+        </li>
+        <li class="pb-step" data-id="p1-3">
+          <div class="pb-check" onclick="pbToggle(this)"></div>
+          <div>
+            <p class="pb-step-title">Pick your category carefully</p>
+            <p class="pb-step-body">Primary category: <code>Bridal Shop</code>. Add secondary categories that match what you actually sell &mdash; <code>Gift Shop</code>, <code>Craft Store</code>. Category is one of the strongest signals for which searches you show up in, more than most of the text on your listing.</p>
+          </div>
+        </li>
+        <li class="pb-step" data-id="p1-4">
+          <div class="pb-check" onclick="pbToggle(this)"></div>
+          <div>
+            <p class="pb-step-title">Verify the profile</p>
+            <p class="pb-step-body">Google will offer verification by phone, email, video, or postcard depending on your business type. Postcard (mailed to your address) is common for service-area businesses and takes 5&ndash;14 days &mdash; start this step early since nothing else goes live until you're verified.</p>
+          </div>
+        </li>
+        <li class="pb-step" data-id="p1-5">
+          <div class="pb-check" onclick="pbToggle(this)"></div>
+          <div>
+            <p class="pb-step-title">Fill in every field, not just the required ones</p>
+            <p class="pb-step-body">Business description (use it to naturally include "handmade," "Gainesville, Virginia," "bridal pouches," "flower crowns"), website URL, phone, hours you're reachable, and at least 10 photos &mdash; your product shots and the real wedding photography you already have work well here. Incomplete profiles rank worse.</p>
+          </div>
+        </li>
+        <li class="pb-step" data-id="p1-6">
+          <div class="pb-check" onclick="pbToggle(this)"></div>
+          <div>
+            <p class="pb-step-title">Ask happy customers to leave a Google review</p>
+            <p class="pb-step-body">Separate from your Etsy or site reviews &mdash; Google reviews specifically feed your Maps ranking. Once verified, Google gives you a shareable review link; send it to a few recent brides directly rather than posting it publicly and hoping.</p>
+          </div>
+        </li>
+        <li class="pb-step" data-id="p1-7">
+          <div class="pb-check" onclick="pbToggle(this)"></div>
+          <div>
+            <p class="pb-step-title">Post an update once or twice a month</p>
+            <p class="pb-step-body">Business Profile has a "Posts" feature, like a mini social feed attached to your listing &mdash; a new collection, a real wedding feature, a seasonal color. Listings that post regularly are treated as more active and tend to outrank ones that go quiet.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="pb-part" id="part2">
+      <div class="pb-part-head">
+        <span class="pb-part-num">PART 2</span>
+        <h2>Earn backlinks</h2>
+      </div>
+      <p class="pb-part-sub">A backlink is another website linking to yours. Google reads them as a vote of confidence &mdash; the more relevant, real sites that link to you, the more it trusts yours. There's no code fix for this; it's outreach and listings, done a little at a time.</p>
+
+      <div class="pb-callout">
+        <strong>Skip anything that promises "100 backlinks for $20."</strong> Paid link farms don't help and can actively get a site penalized. Every link below comes from a real, relevant listing or relationship &mdash; slower, but the kind that actually holds up.
+      </div>
+
+      <p class="pb-part-sub" style="margin-top:2rem; font-weight:600; color:var(--ink);">Wedding-industry directories</p>
+      <div class="pb-directory-grid">
+        <div class="pb-dcard">
+          <p class="pb-dcard-name">The Knot</p>
+          <p class="pb-dcard-tag">Vendor listing</p>
+          <p class="pb-dcard-note">Free basic vendor profile; the biggest wedding-planning directory brides actually search.</p>
+        </div>
+        <div class="pb-dcard">
+          <p class="pb-dcard-name">WeddingWire</p>
+          <p class="pb-dcard-tag">Vendor listing</p>
+          <p class="pb-dcard-note">Same category as The Knot, different audience overlap &mdash; worth doing both.</p>
+        </div>
+        <div class="pb-dcard">
+          <p class="pb-dcard-name">Zola</p>
+          <p class="pb-dcard-tag">Vendor listing</p>
+          <p class="pb-dcard-note">Growing fast with a younger bridal audience; free vendor page.</p>
+        </div>
+        <div class="pb-dcard">
+          <p class="pb-dcard-name">Here Comes The Guide</p>
+          <p class="pb-dcard-tag">Regional directory</p>
+          <p class="pb-dcard-note">Strong for Virginia/DMV-area wedding searches specifically.</p>
+        </div>
+      </div>
+
+      <p class="pb-part-sub" style="margin-top:2rem; font-weight:600; color:var(--ink);">Local &amp; general business listings</p>
+      <div class="pb-directory-grid">
+        <div class="pb-dcard">
+          <p class="pb-dcard-name">Yelp</p>
+          <p class="pb-dcard-tag">Local listing</p>
+          <p class="pb-dcard-note">Free business page with a link back to your site.</p>
+        </div>
+        <div class="pb-dcard">
+          <p class="pb-dcard-name">Prince William County Chamber</p>
+          <p class="pb-dcard-tag">Local org</p>
+          <p class="pb-dcard-note">Gainesville sits in Prince William County &mdash; chamber membership usually includes a directory link, and signals real local presence.</p>
+        </div>
+        <div class="pb-dcard">
+          <p class="pb-dcard-name">Nextdoor Business</p>
+          <p class="pb-dcard-tag">Local network</p>
+          <p class="pb-dcard-note">Free, and puts you in front of neighbors planning weddings nearby.</p>
+        </div>
+        <div class="pb-dcard">
+          <p class="pb-dcard-name">Bing Places</p>
+          <p class="pb-dcard-tag">Search listing</p>
+          <p class="pb-dcard-note">Same idea as Google Business Profile, smaller reach, still worth the 15 minutes.</p>
+        </div>
+      </div>
+
+      <p class="pb-part-sub" style="margin-top:2rem; font-weight:600; color:var(--ink);">Relationships (slower, but the strongest links)</p>
+      <ol class="pb-steps">
+        <li class="pb-step" data-id="p2-1">
+          <div class="pb-check" onclick="pbToggle(this)"></div>
+          <div>
+            <p class="pb-step-title">Ask photographers you've worked with for a feature</p>
+            <p class="pb-step-body">Real weddings you've already supplied pieces for are the easiest pitch you have &mdash; you're not asking for a favor, you're offering them content. Wedding photographers regularly blog real weddings and credit every vendor with a link.</p>
+          </div>
+        </li>
+        <li class="pb-step" data-id="p2-2">
+          <div class="pb-check" onclick="pbToggle(this)"></div>
+          <div>
+            <p class="pb-step-title">Pitch a real-wedding feature to a bridal blog</p>
+            <p class="pb-step-body">Sites like Style Me Pretty, Junebug Weddings, or regional Virginia wedding blogs accept real-wedding submissions from vendors, usually via the photographer as lead submitter. Every feature includes a vendor credit list with links.</p>
+          </div>
+        </li>
+        <li class="pb-step" data-id="p2-3">
+          <div class="pb-check" onclick="pbToggle(this)"></div>
+          <div>
+            <p class="pb-step-title">Cross-link with venues and other vendors</p>
+            <p class="pb-step-body">If a venue or planner you've worked with has a "preferred vendors" page, ask to be added. Offer the same back if you ever build one on your site &mdash; a genuine two-way relationship, not a link swap for its own sake.</p>
+          </div>
+        </li>
+        <li class="pb-step" data-id="p2-4">
+          <div class="pb-check" onclick="pbToggle(this)"></div>
+          <div>
+            <p class="pb-step-title">Keep your Etsy shop's "About" section linking back</p>
+            <p class="pb-step-body">You already have Etsy traffic &mdash; make sure your Etsy shop bio and any social profiles (Instagram, Pinterest, Facebook) link to ivoryandbloom.shop. Not a high-authority backlink, but it compounds with everything else.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="pb-part" id="priority">
+      <div class="pb-part-head">
+        <span class="pb-part-num">START HERE</span>
+        <h2>If you only have an hour this week</h2>
+      </div>
+      <div class="pb-priority">
+        <div class="pb-priority-row">
+          <span class="pb-priority-tier">First</span>
+          <span class="pb-priority-desc"><b>Google Business Profile.</b> Highest impact, fastest to see results, and it's the only thing on this page that actually gets you onto Maps.</span>
+        </div>
+        <div class="pb-priority-row">
+          <span class="pb-priority-tier">Second</span>
+          <span class="pb-priority-desc"><b>The Knot + WeddingWire listings.</b> Free, fast to set up, and both a real backlink and a real source of bridal traffic on their own.</span>
+        </div>
+        <div class="pb-priority-row">
+          <span class="pb-priority-tier">Third</span>
+          <span class="pb-priority-desc"><b>One photographer outreach email.</b> Pick the real wedding you're proudest of and ask that photographer for a feature. This is the slowest to land but the strongest link once it does.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-honest" id="honest">
+      <h3>A note on keyword research</h3>
+      <p>I don't have access to real search-volume tools (Google Keyword Planner, Ahrefs, SEMrush) &mdash; the long-tail phrases already worked into your site (things like "custom color bridesmaid pouch" or "handmade flower crown wedding") are reasoned from what brides in this category plausibly search, not pulled from verified volume data. If you want that verified, Google Keyword Planner is free with a Google Ads account (you don't have to run ads to use the tool) and would tell you which phrases are actually worth writing more content around.</p>
+    </section>
+
+  </div>
+</div>
+
+<script>
+function pbToggle(el) {
+  el.classList.toggle('done');
+  el.closest('.pb-step').classList.toggle('done');
+  var id = el.closest('.pb-step').dataset.id;
+  var state = JSON.parse(localStorage.getItem('pb-checklist') || '{}');
+  state[id] = el.classList.contains('done');
+  localStorage.setItem('pb-checklist', JSON.stringify(state));
+  pbUpdateProgress();
+}
+function pbUpdateProgress() {
+  var all = document.querySelectorAll('.pb-step');
+  var done = document.querySelectorAll('.pb-step.done');
+  var pct = all.length ? Math.round((done.length / all.length) * 100) : 0;
+  document.getElementById('pbFill').style.width = pct + '%';
+}
+(function pbInit() {
+  var state = JSON.parse(localStorage.getItem('pb-checklist') || '{}');
+  document.querySelectorAll('.pb-step').forEach(function(step) {
+    if (state[step.dataset.id]) {
+      step.classList.add('done');
+      step.querySelector('.pb-check').classList.add('done');
+    }
+  });
+  pbUpdateProgress();
+})();
+</script>
