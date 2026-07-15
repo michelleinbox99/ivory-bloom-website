@@ -1,0 +1,39 @@
+/* ============ OUR CRAFT PAGE ============ */
+
+/* Pages without a dark hero: force the header's "scrolled" appearance so the
+   white logo/nav aren't invisible on a light background. */
+body.solid-header header {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+  padding: 18px 0;
+  box-shadow: 0 2px 24px rgba(51,37,30,0.06);
+}
+body.solid-header .logo { color: var(--espresso); }
+body.solid-header nav.main-nav a { color: var(--ink-soft); }
+body.solid-header .btn-header-cta { color: var(--espresso); border-color: var(--espresso); }
+body.solid-header .btn-header-cta:hover { color: var(--white); }
+body.solid-header .menu-toggle span { background: var(--espresso); }
+
+/* Page hero band (below the fixed header) */
+.page-hero {
+  background: var(--parchment);
+  text-align: center;
+  padding: 190px 0 96px;
+}
+.page-hero h1 { font-size: clamp(36px, 4.6vw, 58px); font-weight: 400; margin-bottom: 18px; }
+.page-hero p { font-size: 16.5px; color: var(--terracotta-rose); max-width: 560px; margin: 0 auto; }
+@media (max-width: 860px) { .page-hero { padding: 150px 0 70px; } }
+
+/* Process steps */
+.craft-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px;
+}
+.craft-step { text-align: left; }
+.craft-step .step-num {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 44px; color: var(--brass); line-height: 1; display: block; margin-bottom: 14px;
+}
+.craft-step h3 { font-size: 22px; font-weight: 400; margin-bottom: 10px; }
+.craft-step p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.7; }
+@media (max-width: 1100px) { .craft-steps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .craft-steps { grid-template-columns: 1fr; } }

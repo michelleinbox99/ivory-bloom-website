@@ -1,0 +1,64 @@
+/* ============ LOVE NOTES (reviews & social proof) ============ */
+
+/* Aggregate band */
+.lovenotes-aggregate { text-align: center; max-width: 540px; margin: 0 auto; }
+.lovenotes-aggregate .stars { color: var(--brass); font-size: 20px; letter-spacing: 4px; }
+.lovenotes-aggregate .agg-num {
+  font-family: var(--font-display); font-size: clamp(46px, 6vw, 60px); color: var(--espresso);
+  line-height: 1; margin: 12px 0 6px;
+}
+.lovenotes-aggregate .agg-num span { font-size: 26px; color: var(--terracotta-rose); }
+.lovenotes-aggregate .agg-sub { font-size: 14px; letter-spacing: 0.04em; color: var(--terracotta-rose); }
+.lovenotes-aggregate .agg-link {
+  display: inline-block; margin-top: 18px;
+  font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brass);
+  border-bottom: 1px solid var(--linen); padding-bottom: 4px; transition: border-color var(--transition-normal), color var(--transition-normal);
+}
+.lovenotes-aggregate .agg-link:hover { color: var(--terracotta-rose); border-color: var(--brass); }
+
+/* Review card grid */
+.review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.review-card {
+  background: var(--white); border: 1px solid var(--linen); border-radius: 4px;
+  padding: 34px 30px 28px; display: flex; flex-direction: column;
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+}
+.review-card:hover { transform: translateY(-6px); box-shadow: 0 22px 44px rgba(51,37,30,0.09); }
+.review-card .stars { color: var(--brass); font-size: 14px; letter-spacing: 2px; margin-bottom: 16px; }
+.review-quote {
+  font-family: var(--font-display); font-style: italic; font-size: 20px; line-height: 1.5;
+  color: var(--espresso); margin-bottom: 20px; flex: 1;
+}
+.review-attrib { font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta-rose); }
+.review-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.review-chip {
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta-rose);
+  background: var(--linen); padding: 5px 12px; border-radius: 20px;
+}
+.review-source { font-size: 11px; color: var(--text-lighter); margin-top: 14px; }
+.review-source a { color: var(--terracotta-rose); border-bottom: 1px solid var(--linen); transition: border-color var(--transition-normal); }
+.review-source a:hover { border-color: var(--brass); }
+@media (max-width: 900px) { .review-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .review-grid { grid-template-columns: 1fr; } }
+
+/* Curated note under the grid */
+.lovenotes-note {
+  text-align: center; font-family: var(--font-display); font-style: italic;
+  font-size: 17px; color: var(--terracotta-rose); margin-top: 40px;
+}
+
+/* Customer gallery (brand's own consented social photos) */
+.lovenotes-gallery { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+.lovenotes-gallery a { display: block; overflow: hidden; border-radius: 3px; }
+.lovenotes-gallery img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; transition: transform 0.7s cubic-bezier(.2,.8,.2,1); }
+.lovenotes-gallery a:hover img { transform: scale(1.06); }
+@media (max-width: 900px) { .lovenotes-gallery { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 540px) { .lovenotes-gallery { grid-template-columns: repeat(2, 1fr); } }
+
+/*
+  FUTURE (needs real customer photos + written consent — do not fabricate):
+  - .review-story  : featured card, wedding photo + longer quote + "shop their collection" link
+  - .review-beforeafter : two-up inspiration image -> finished piece, for color-match stories
+  Add these components here, and switch on a .review-filters row (theme/persona) once the
+  library grows past ~8 reviews so no filter renders empty.
+*/

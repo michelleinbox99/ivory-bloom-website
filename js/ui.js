@@ -28,7 +28,7 @@ mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeM
 
 // ===== Reveal on scroll =====
 
-const revealEls = document.querySelectorAll('.cat-card, .journal-card, .testi-card, .showcase-intro-img, .showcase-content, .gallery-item, .atelier-card, .atelier-quote');
+const revealEls = document.querySelectorAll('.cat-card, .journal-card, .showcase-intro-img, .showcase-content, .gallery-item, .atelier-quote');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {

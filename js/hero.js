@@ -35,6 +35,18 @@
   });
   const dots = Array.from(dotsContainer.querySelectorAll('button'));
 
+  // Only the active slide + the next one in sequence carry a real src (set in HTML).
+  // The rest sit on data-src/data-srcset until the carousel is about to reach them,
+  // since loading="lazy" doesn't help here — every slide occupies the same box.
+  function preloadSlide(index) {
+    const img = slides[index] && slides[index].querySelector('.hero-media img');
+    if (!img || !img.dataset.src) return;
+    img.src = img.dataset.src;
+    if (img.dataset.srcset) img.srcset = img.dataset.srcset;
+    delete img.dataset.src;
+    delete img.dataset.srcset;
+  }
+
   function restartKenBurns(slide) {
     const img = slide.querySelector('.hero-media img');
     if (!img || prefersReducedMotion) return;
@@ -64,6 +76,8 @@
     dots[current].setAttribute('aria-selected', 'false');
 
     current = nextIndex;
+    preloadSlide(current);
+    preloadSlide((current + 1) % total);
 
     slides[current].classList.add('active');
     slides[current].setAttribute('aria-hidden', 'false');

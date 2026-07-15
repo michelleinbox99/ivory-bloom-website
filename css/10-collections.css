@@ -1,0 +1,54 @@
+/* ============ COLLECTION PAGES ============ */
+
+/* Price / availability line under the page-hero heading */
+.price-line {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 19px; color: var(--terracotta-rose); margin-top: 14px;
+}
+
+/* Signature shade names shown as quiet text chips (names only — satin
+   shades are color-matched from photos, so no on-screen swatches). */
+.shade-chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 26px; padding: 0; }
+.shade-chips li {
+  list-style: none;
+  font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--terracotta-rose); background: var(--linen);
+  padding: 8px 16px; border-radius: 30px;
+}
+
+/* CTA row on a collection page: primary consultation button + quiet Etsy link */
+.collection-cta-row { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; margin-top: 8px; }
+.etsy-quiet {
+  font-size: 12px; letter-spacing: 0.08em; color: var(--terracotta-rose);
+  border-bottom: 1px solid var(--linen); padding-bottom: 3px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.etsy-quiet:hover { color: var(--espresso); border-color: var(--brass); }
+
+/* .leadtime-note moved to css/04-sections.css (now shared with the homepage) */
+
+/* Conversion reassurance band (shared partial) */
+.collection-assurance .assurance-row {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 20px 48px; margin-bottom: 30px;
+}
+.collection-assurance .assurance-item { display: flex; align-items: center; gap: 12px; }
+.collection-assurance .assurance-item svg { width: 24px; height: 24px; color: var(--brass); flex-shrink: 0; }
+.collection-assurance .assurance-item span {
+  font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500;
+}
+.collection-assurance .assurance-reviews {
+  display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
+  font-size: 15px; color: var(--ink-soft); transition: color 0.3s ease;
+}
+.collection-assurance .assurance-reviews:hover { color: var(--terracotta-rose); }
+.collection-assurance .assurance-stars { color: var(--brass); letter-spacing: 2px; }
+.collection-assurance .assurance-reviews strong { font-family: var(--font-display); font-size: 19px; font-weight: 500; color: var(--espresso); }
+.collection-assurance .assurance-note {
+  text-align: center; max-width: 520px; margin: 14px auto 0;
+  font-size: 13.5px; color: var(--terracotta-rose);
+}
+
+/* Compact 3-up lookbook strip (reuses .gallery-item figures, no filters) */
+.lookbook-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 900px) { .lookbook-strip { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
+@media (max-width: 540px) { .lookbook-strip { grid-template-columns: 1fr; } }
