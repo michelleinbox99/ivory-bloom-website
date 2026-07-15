@@ -1,0 +1,25 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer circle -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#000" stroke-width="3"/>
+  <circle cx="100" cy="100" r="85" fill="none" stroke="#000" stroke-width="2"/>
+
+  <!-- Background for monogram -->
+  <circle cx="100" cy="100" r="80" fill="#000"/>
+
+  <!-- IB Monogram -->
+  <text x="100" y="125" font-family="Georgia, serif" font-size="80" font-weight="bold" text-anchor="middle" fill="#FFF" letter-spacing="-5">IB</text>
+
+  <!-- Decorative flower elements inside monogram -->
+  <!-- Left leaf -->
+  <path d="M 70 90 Q 65 100 70 110" fill="none" stroke="#FFF" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Right leaf -->
+  <path d="M 130 90 Q 135 100 130 110" fill="none" stroke="#FFF" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Small flower above B -->
+  <circle cx="110" cy="60" r="2" fill="#FFF"/>
+  <circle cx="105" cy="58" r="2" fill="#FFF"/>
+  <circle cx="115" cy="58" r="2" fill="#FFF"/>
+  <circle cx="103" cy="63" r="2" fill="#FFF"/>
+  <circle cx="117" cy="63" r="2" fill="#FFF"/>
+</svg>

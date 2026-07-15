@@ -1,0 +1,32 @@
+<svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main text: IVORY & BLOOM -->
+  <text x="400" y="90" font-family="Georgia, serif" font-size="72" font-weight="400" text-anchor="middle" fill="#000" letter-spacing="2">
+    IVORY
+  </text>
+
+  <!-- Ampersand -->
+  <text x="400" y="90" font-family="Georgia, serif" font-size="48" font-style="italic" text-anchor="middle" fill="#000" dx="200">
+    &amp;
+  </text>
+
+  <!-- BLOOM -->
+  <text x="400" y="90" font-family="Georgia, serif" font-size="72" font-weight="400" text-anchor="middle" fill="#000" letter-spacing="2" dx="320">
+    BLOOM
+  </text>
+
+  <!-- ATELIER text below -->
+  <text x="400" y="135" font-family="Georgia, serif" font-size="36" text-anchor="middle" fill="#000" letter-spacing="3">
+    ATELIER
+  </text>
+
+  <!-- Left decorative line -->
+  <line x1="180" y1="130" x2="280" y2="130" stroke="#000" stroke-width="2"/>
+
+  <!-- Right decorative line -->
+  <line x1="520" y1="130" x2="620" y2="130" stroke="#000" stroke-width="2"/>
+
+  <!-- Tagline -->
+  <text x="400" y="170" font-family="Georgia, serif" font-size="16" font-style="italic" text-anchor="middle" fill="#000" letter-spacing="0.5">
+    Timeless Designs. Unforgettable Moments.
+  </text>
+</svg>
