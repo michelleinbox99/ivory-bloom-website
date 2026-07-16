@@ -95,6 +95,8 @@
     return out;
   }
 
+  function round2(n) { return Math.round(n * 100) / 100; }
+
   function getTotals() {
     var subtotal = 0, count = 0;
     var hydrated = getItems();
@@ -102,8 +104,9 @@
       subtotal += hydrated[i].lineTotal;
       count += hydrated[i].qty;
     }
-    var tax = Math.round(subtotal * TAX_RATE * 100) / 100;
-    return { subtotal: subtotal, tax: tax, total: subtotal + tax, count: count };
+    subtotal = round2(subtotal);
+    var tax = round2(subtotal * TAX_RATE);
+    return { subtotal: subtotal, tax: tax, total: round2(subtotal + tax), count: count };
   }
 
   function add(id, variant, qty) {
