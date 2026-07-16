@@ -14,6 +14,35 @@
 
   var products = [
     {
+      id: 'flower-girl-headband-001',
+      name: 'Ivory Garden Heirloom Flower Girl Headband',
+      category: 'Flower Girl Collection',
+      price: 185,
+      image: 'images/flowergirl-set.jpg',
+      url: 'collections/flower-girl-headband.html',
+      description: 'A handcrafted floral heirloom designed for the little moments that become lifelong memories.',
+      variants: [
+        { name: 'Ivory Classic' },
+        { name: 'Blush Garden' },
+        { name: 'Champagne Bloom' }
+      ],
+      sizes: ['Toddler', 'Child', 'Custom'],
+      personalizable: true,
+      inventory: true
+    },
+    {
+      id: 'gift-packaging-heirloom',
+      name: 'Heirloom Gift Packaging',
+      category: 'Add-Ons',
+      price: 12,
+      image: 'images/insta-2.jpg',
+      url: 'collections/flower-girl-headband.html',
+      description: 'Satin-lined keepsake box, hand-tied ribbon, and a written note card.',
+      variants: [{ name: 'Standard' }],
+      addon: true,
+      inventory: true
+    },
+    {
       id: 'flower-girl-set-ivory-garden',
       name: 'Ivory Garden Flower Girl Set',
       category: 'Flower Girl Sets',

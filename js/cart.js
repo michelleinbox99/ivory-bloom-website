@@ -440,10 +440,12 @@
     if (!mount) return;
     var inCart = {};
     for (var i = 0; i < items.length; i++) inCart[items[i].id] = true;
+    var excl = mount.getAttribute('data-exclude');
+    if (excl) inCart[excl] = true;
     var picks = [];
     var all = window.IvoryBloom.products;
     for (var j = 0; j < all.length && picks.length < 3; j++) {
-      if (!inCart[all[j].id]) picks.push(all[j]);
+      if (!inCart[all[j].id] && !all[j].addon) picks.push(all[j]);
     }
     var html = '';
     for (var k = 0; k < picks.length; k++) {
