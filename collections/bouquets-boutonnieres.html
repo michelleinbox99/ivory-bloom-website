@@ -47,6 +47,7 @@
 <link rel="stylesheet" href="../css/08-craft.css">
 <link rel="stylesheet" href="../css/10-collections.css">
 <link rel="stylesheet" href="../css/11-faq.css">
+<link rel="stylesheet" href="../css/14-cart.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why everlasting flowers instead of fresh?","acceptedAnswer":{"@type":"Answer","text":"Handcrafted blooms don't wilt, need no cold storage or morning-of delivery, and are kept long after the wedding. They're built for the decades after the day, not just the day."}},{"@type":"Question","name":"How is a bouquet priced?","acceptedAnswer":{"@type":"Answer","text":"By composition. Share your vision and we'll quote it piece by piece, with the lead time confirmed alongside your design."}}]}
 </script>
@@ -72,6 +73,10 @@
         <span class="header-trust-div" aria-hidden="true"></span>
         <span class="header-trust-item">9K+ Heirloom Pieces</span>
       </div>
+      <button class="cart-toggle" aria-label="Open your cart">
+        <svg class="cart-bag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5.5 8.5h13l-1 12h-11l-1-12z" stroke-linejoin="round"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5" stroke-linecap="round"/></svg>
+        <span class="cart-count" aria-hidden="true">0</span>
+      </button>
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -345,5 +350,7 @@
 
 <script src="../js/ui.js"></script>
 
+<script src="../js/products.js"></script>
+<script src="../js/cart.js"></script>
 </body>
 </html>

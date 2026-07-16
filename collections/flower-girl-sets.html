@@ -54,8 +54,29 @@
 <link rel="stylesheet" href="../css/08-craft.css">
 <link rel="stylesheet" href="../css/10-collections.css">
 <link rel="stylesheet" href="../css/11-faq.css">
+<link rel="stylesheet" href="../css/14-cart.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I size a flower girl crown without a fitting?","acceptedAnswer":{"@type":"Answer","text":"Have her parent measure head circumference with a soft tape just above the ears. The adjustable ribbon ties comfortably cover most girls between three and eight."}},{"@type":"Question","name":"Should she carry a basket or a pouch?","acceptedAnswer":{"@type":"Answer","text":"We recommend the pearl-handle petal pouch: spill-proof, easy for small hands to hold, and a keepsake after the day rather than storage-closet clutter."}}]}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Ivory Garden Flower Girl Set",
+  "sku": "flower-girl-set-ivory-garden",
+  "category": "Flower Girl Sets",
+  "image": "https://ivoryandbloom.shop/images/hero-flowergirl-garden.jpg",
+  "description": "A hand-shaped everlasting crown and pearl-handle petal pouch, sized for ages three to eight. Available in Ivory Classic, Blush Garden, and Champagne Bloom.",
+  "brand": { "@type": "Brand", "name": "Ivory & Bloom Atelier" },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://ivoryandbloom.shop/collections/flower-girl-sets.html",
+    "price": "85.00",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition"
+  }
+}
 </script>
 </head>
 <body class="solid-header">
@@ -79,6 +100,10 @@
         <span class="header-trust-div" aria-hidden="true"></span>
         <span class="header-trust-item">9K+ Heirloom Pieces</span>
       </div>
+      <button class="cart-toggle" aria-label="Open your cart">
+        <svg class="cart-bag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5.5 8.5h13l-1 12h-11l-1-12z" stroke-linejoin="round"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5" stroke-linecap="round"/></svg>
+        <span class="cart-count" aria-hidden="true">0</span>
+      </button>
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -142,6 +167,36 @@
         <div class="leadtime-note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.25"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l2.5 2.5"/></svg>
           Made after you order &middot; about two weeks in the making
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-parchment">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Ready to Order</span>
+      <h2>The Signature <em>Piece</em></h2>
+    </div>
+    <div class="product-block">
+      <div class="product-block-img">
+        <img src="../images/hero-flowergirl-garden.jpg" alt="Flower girl wearing the Ivory Garden set — everlasting crown and pearl-handle petal pouch — in a garden" width="800" height="1000" loading="lazy" decoding="async">
+      </div>
+      <div class="product-block-copy">
+        <span class="eyebrow">Flower Girl Sets</span>
+        <h3 class="product-block-name">Ivory Garden Flower Girl Set</h3>
+        <div class="product-block-price">$85</div>
+        <p class="product-block-desc">A hand-shaped everlasting crown and pearl-handle petal pouch, sized for ages three to eight. The set she carries down the aisle — and keeps long after.</p>
+        <label class="product-variant-label" for="variant-flower-girl-set">Colorway</label>
+        <select class="product-variant-select" id="variant-flower-girl-set">
+          <option>Ivory Classic</option>
+          <option>Blush Garden</option>
+          <option>Champagne Bloom</option>
+        </select>
+        <div class="product-block-actions">
+          <button class="btn-add-cart" data-add-to-cart="flower-girl-set-ivory-garden">Add to Cart</button>
+          <button class="btn-add-wishlist" data-add-to-wishlist="flower-girl-set-ivory-garden" aria-pressed="false">&#9825; Add to Wishlist</button>
         </div>
       </div>
     </div>
@@ -355,5 +410,7 @@
 
 <script src="../js/ui.js"></script>
 
+<script src="../js/products.js"></script>
+<script src="../js/cart.js"></script>
 </body>
 </html>

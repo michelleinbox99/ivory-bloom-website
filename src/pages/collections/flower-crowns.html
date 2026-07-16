@@ -53,8 +53,49 @@
 <link rel="stylesheet" href="../css/08-craft.css">
 <link rel="stylesheet" href="../css/10-collections.css">
 <link rel="stylesheet" href="../css/11-faq.css">
+<link rel="stylesheet" href="../css/14-cart.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Will the flowers survive the whole wedding day?","acceptedAnswer":{"@type":"Answer","text":"Yes. The blooms are hand-shaped clay and fabric, so they hold their shape from ceremony to last dance and never wilt, unlike fresh flowers."}},{"@type":"Question","name":"How do I choose the right crown size?","acceptedAnswer":{"@type":"Answer","text":"Crowns close with adjustable silk ribbon ties, so they fit a range of head sizes and adjust on the day. They photograph beautifully trailing down the back."}}]}
+</script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Heirloom Flower Crown",
+    "sku": "flower-crown-heirloom",
+    "category": "Flower Crowns",
+    "image": "https://ivoryandbloom.shop/images/crown-detail.jpg",
+    "description": "Everlasting florals shaped petal by petal on an adjustable ribbon-tie band. Ivory & Pearl, Blush Garden, or Sage & Cream.",
+    "brand": { "@type": "Brand", "name": "Ivory & Bloom Atelier" },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://ivoryandbloom.shop/collections/flower-crowns.html",
+      "price": "58.00",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Everlasting Hair Flowers, Set of Three",
+    "sku": "hair-flowers-trio",
+    "category": "Flower Crowns",
+    "image": "https://ivoryandbloom.shop/images/crown-editorial.jpg",
+    "description": "Three hand-shaped everlasting blooms on pins, worn scattered through an updo. Ivory & Pearl or Blush Garden.",
+    "brand": { "@type": "Brand", "name": "Ivory & Bloom Atelier" },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://ivoryandbloom.shop/collections/flower-crowns.html",
+      "price": "38.00",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    }
+  }
+]
 </script>
 </head>
 <body class="solid-header">
@@ -107,6 +148,56 @@
         <div class="leadtime-note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.25"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l2.5 2.5"/></svg>
           Made after you order &middot; about two weeks in the making
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-parchment">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Ready to Order</span>
+      <h2>The Signature <em>Pieces</em></h2>
+    </div>
+    <div class="product-block">
+      <div class="product-block-img">
+        <img src="../images/crown-detail.jpg" alt="Handmade flower crown with pearl and everlasting florals, detail view" width="1200" height="900" loading="lazy" decoding="async">
+      </div>
+      <div class="product-block-copy">
+        <span class="eyebrow">Flower Crowns</span>
+        <h3 class="product-block-name">Heirloom Flower Crown</h3>
+        <div class="product-block-price">$58</div>
+        <p class="product-block-desc">Everlasting florals shaped petal by petal on an adjustable ribbon-tie band. One size, tied to fit.</p>
+        <label class="product-variant-label" for="variant-flower-crown">Colorway</label>
+        <select class="product-variant-select" id="variant-flower-crown">
+          <option>Ivory &amp; Pearl</option>
+          <option>Blush Garden</option>
+          <option>Sage &amp; Cream</option>
+        </select>
+        <div class="product-block-actions">
+          <button class="btn-add-cart" data-add-to-cart="flower-crown-heirloom">Add to Cart</button>
+          <button class="btn-add-wishlist" data-add-to-wishlist="flower-crown-heirloom" aria-pressed="false">&#9825; Add to Wishlist</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-block" style="margin-top: var(--space-4);">
+      <div class="product-block-img">
+        <img src="../images/crown-editorial.jpg" alt="Everlasting hair flowers styled through a bridal updo" width="1200" height="900" loading="lazy" decoding="async">
+      </div>
+      <div class="product-block-copy">
+        <span class="eyebrow">Hair Flowers</span>
+        <h3 class="product-block-name">Everlasting Hair Flowers, Set of Three</h3>
+        <div class="product-block-price">$38</div>
+        <p class="product-block-desc">Three hand-shaped blooms on pins — worn scattered through an updo or clustered at the nape.</p>
+        <label class="product-variant-label" for="variant-hair-flowers">Colorway</label>
+        <select class="product-variant-select" id="variant-hair-flowers">
+          <option>Ivory &amp; Pearl</option>
+          <option>Blush Garden</option>
+        </select>
+        <div class="product-block-actions">
+          <button class="btn-add-cart" data-add-to-cart="hair-flowers-trio">Add to Cart</button>
+          <button class="btn-add-wishlist" data-add-to-wishlist="hair-flowers-trio" aria-pressed="false">&#9825; Add to Wishlist</button>
         </div>
       </div>
     </div>
@@ -203,5 +294,7 @@
 
 <script src="../js/ui.js"></script>
 
+<script src="../js/products.js"></script>
+<script src="../js/cart.js"></script>
 </body>
 </html>

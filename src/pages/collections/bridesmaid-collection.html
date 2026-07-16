@@ -53,8 +53,29 @@
 <link rel="stylesheet" href="../css/08-craft.css">
 <link rel="stylesheet" href="../css/10-collections.css">
 <link rel="stylesheet" href="../css/11-faq.css">
+<link rel="stylesheet" href="../css/14-cart.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can each bridesmaid pouch be a different color?","acceptedAnswer":{"@type":"Answer","text":"Yes. Match each pouch to its wearer's dress, or alternate two shades through your palette, anchored by the signature hand-strung pearl handle."}},{"@type":"Question","name":"Is there a minimum order for a bridal party set?","acceptedAnswer":{"@type":"Answer","text":"No set minimum. Pieces are made to order in exactly the quantities your party calls for, and they double as a keepsake bridesmaid gift."}}]}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Bridesmaid Satin Pouch",
+  "sku": "bridesmaid-satin-pouch",
+  "category": "Bridesmaid Collection",
+  "image": "https://ivoryandbloom.shop/images/hero-bridesmaids-pouch-gift.jpg",
+  "description": "Coordinated satin bridesmaid pouch dyed to your wedding palette — Ivory, Blush, Champagne, or Sage. Priced per pouch.",
+  "brand": { "@type": "Brand", "name": "Ivory & Bloom Atelier" },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://ivoryandbloom.shop/collections/bridesmaid-collection.html",
+    "price": "44.00",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition"
+  }
+}
 </script>
 </head>
 <body class="solid-header">
@@ -106,6 +127,37 @@
         <div class="leadtime-note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.25"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l2.5 2.5"/></svg>
           Made after you order &middot; about two weeks in the making
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-parchment">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Ready to Order</span>
+      <h2>The Signature <em>Piece</em></h2>
+    </div>
+    <div class="product-block">
+      <div class="product-block-img">
+        <img src="../images/hero-bridesmaids-pouch-gift.jpg" alt="Bridesmaids holding coordinated satin pouch gifts" width="800" height="1000" loading="lazy" decoding="async">
+      </div>
+      <div class="product-block-copy">
+        <span class="eyebrow">Bridesmaid Collection</span>
+        <h3 class="product-block-name">Bridesmaid Satin Pouch</h3>
+        <div class="product-block-price">$44 <span style="font-size: var(--text-sm); color: var(--text-muted);">each</span></div>
+        <p class="product-block-desc">The coordinated party gift — one satin pouch, dyed to your palette. Add one per bridesmaid; adjust quantities in your cart.</p>
+        <label class="product-variant-label" for="variant-bridesmaid-pouch">Colorway</label>
+        <select class="product-variant-select" id="variant-bridesmaid-pouch">
+          <option>Ivory</option>
+          <option>Blush</option>
+          <option>Champagne</option>
+          <option>Sage</option>
+        </select>
+        <div class="product-block-actions">
+          <button class="btn-add-cart" data-add-to-cart="bridesmaid-satin-pouch">Add to Cart</button>
+          <button class="btn-add-wishlist" data-add-to-wishlist="bridesmaid-satin-pouch" aria-pressed="false">&#9825; Add to Wishlist</button>
         </div>
       </div>
     </div>
@@ -202,5 +254,7 @@
 
 <script src="../js/ui.js"></script>
 
+<script src="../js/products.js"></script>
+<script src="../js/cart.js"></script>
 </body>
 </html>

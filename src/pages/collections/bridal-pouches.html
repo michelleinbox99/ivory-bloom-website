@@ -53,8 +53,29 @@
 <link rel="stylesheet" href="../css/08-craft.css">
 <link rel="stylesheet" href="../css/10-collections.css">
 <link rel="stylesheet" href="../css/11-faq.css">
+<link rel="stylesheet" href="../css/14-cart.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How long does a made-to-order bridal pouch take?","acceptedAnswer":{"@type":"Answer","text":"About two weeks. Your pouch is cut and sewn after you order, in your shade, and checked against your color reference in natural light before it ships."}},{"@type":"Question","name":"Can you match my exact wedding color?","acceptedAnswer":{"@type":"Answer","text":"Yes, free of charge. Send a photo of your dresses and the satin is matched to it, or choose from six signature shades: Ivory, Blush, Dusty Rose, Lavender, Dusty Blue, and Sage."}}]}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Pearl-Handle Satin Bridal Pouch",
+  "sku": "bridal-pouch-pearl-handle",
+  "category": "Bridal Pouches",
+  "image": "https://ivoryandbloom.shop/images/hero-pouch-florals.jpg",
+  "description": "Duchess satin bridal pouch with a hand-strung pearl handle, made to order in Ivory, Blush, or Champagne.",
+  "brand": { "@type": "Brand", "name": "Ivory & Bloom Atelier" },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://ivoryandbloom.shop/collections/bridal-pouches.html",
+    "price": "48.00",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition"
+  }
+}
 </script>
 </head>
 <body class="solid-header">
@@ -110,6 +131,36 @@
         <div class="leadtime-note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.25"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l2.5 2.5"/></svg>
           Cut after you order &middot; about two weeks in the making
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-parchment">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Ready to Order</span>
+      <h2>The Signature <em>Piece</em></h2>
+    </div>
+    <div class="product-block">
+      <div class="product-block-img">
+        <img src="../images/hero-pouch-florals.jpg" alt="Pearl-handle satin bridal pouch styled with florals" width="800" height="1000" loading="lazy" decoding="async">
+      </div>
+      <div class="product-block-copy">
+        <span class="eyebrow">Bridal Pouches</span>
+        <h3 class="product-block-name">Pearl-Handle Satin Bridal Pouch</h3>
+        <div class="product-block-price">$48</div>
+        <p class="product-block-desc">Duchess satin with a hand-strung pearl handle — carried down the aisle, kept for decades. Made to order in your shade.</p>
+        <label class="product-variant-label" for="variant-bridal-pouch">Colorway</label>
+        <select class="product-variant-select" id="variant-bridal-pouch">
+          <option>Ivory</option>
+          <option>Blush</option>
+          <option>Champagne</option>
+        </select>
+        <div class="product-block-actions">
+          <button class="btn-add-cart" data-add-to-cart="bridal-pouch-pearl-handle">Add to Cart</button>
+          <button class="btn-add-wishlist" data-add-to-wishlist="bridal-pouch-pearl-handle" aria-pressed="false">&#9825; Add to Wishlist</button>
         </div>
       </div>
     </div>
@@ -206,5 +257,7 @@
 
 <script src="../js/ui.js"></script>
 
+<script src="../js/products.js"></script>
+<script src="../js/cart.js"></script>
 </body>
 </html>

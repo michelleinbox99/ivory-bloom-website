@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | Ivory & Bloom Atelier</title>
+<meta name="description" content="Complete your order of handcrafted bridal keepsakes.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#33251E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2333251E'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='24' fill='%23FAF6F3'%3EI%3Ctspan fill='%23C59F8B'%3E%26amp;%3C/tspan%3EB%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/00-tokens.css">
+<link rel="stylesheet" href="css/01-base.css">
+<link rel="stylesheet" href="css/02-header-nav.css">
+<link rel="stylesheet" href="css/03-hero.css">
+<link rel="stylesheet" href="css/04-sections.css">
+<link rel="stylesheet" href="css/06-footer.css">
+<link rel="stylesheet" href="css/07-responsive.css">
+<link rel="stylesheet" href="css/08-craft.css">
+<link rel="stylesheet" href="css/14-cart.css">
+</head>
+<body class="solid-header">
+
+<!-- INCLUDE:homepage-header -->
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Almost Yours</span>
+    <h1>Complete Your <em>Order</em></h1>
+    <div class="price-line">Secure checkout &middot; Every piece made to order</div>
+  </div>
+</section>
+
+<section class="bg-white">
+  <div class="container" id="checkoutMain">
+    <div class="checkout-grid">
+      <form class="checkout-form-card" id="checkoutForm" novalidate>
+        <h2 class="checkout-section-title">Your Details</h2>
+        <div class="checkout-row">
+          <div class="checkout-field">
+            <label for="coFirstName">First Name</label>
+            <input type="text" id="coFirstName" name="firstName" autocomplete="given-name" required>
+            <span class="field-error-msg" role="alert"></span>
+          </div>
+          <div class="checkout-field">
+            <label for="coLastName">Last Name</label>
+            <input type="text" id="coLastName" name="lastName" autocomplete="family-name" required>
+            <span class="field-error-msg" role="alert"></span>
+          </div>
+        </div>
+        <div class="checkout-row">
+          <div class="checkout-field">
+            <label for="coEmail">Email</label>
+            <input type="email" id="coEmail" name="email" autocomplete="email" required>
+            <span class="field-error-msg" role="alert"></span>
+          </div>
+          <div class="checkout-field">
+            <label for="coPhone">Phone <span aria-hidden="true">(optional)</span></label>
+            <input type="tel" id="coPhone" name="phone" autocomplete="tel">
+            <span class="field-error-msg" role="alert"></span>
+          </div>
+        </div>
+
+        <h2 class="checkout-section-title">Shipping Address</h2>
+        <div class="checkout-field">
+          <label for="coAddress">Street Address</label>
+          <input type="text" id="coAddress" name="address" autocomplete="street-address" required>
+          <span class="field-error-msg" role="alert"></span>
+        </div>
+        <div class="checkout-row">
+          <div class="checkout-field">
+            <label for="coCity">City</label>
+            <input type="text" id="coCity" name="city" autocomplete="address-level2" required>
+            <span class="field-error-msg" role="alert"></span>
+          </div>
+          <div class="checkout-field">
+            <label for="coState">State</label>
+            <input type="text" id="coState" name="state" autocomplete="address-level1" required>
+            <span class="field-error-msg" role="alert"></span>
+          </div>
+        </div>
+        <div class="checkout-row">
+          <div class="checkout-field">
+            <label for="coZip">ZIP Code</label>
+            <input type="text" id="coZip" name="zip" inputmode="numeric" autocomplete="postal-code" required>
+            <span class="field-error-msg" role="alert"></span>
+          </div>
+          <div class="checkout-field"></div>
+        </div>
+
+        <h2 class="checkout-section-title">Payment</h2>
+        <div class="checkout-payment-placeholder" id="stripePaymentElement">
+          <strong>Secure payment is on its way</strong>
+          Card payment (via Stripe) opens here soon. For now, place your request below and
+          Michelle will confirm your order and arrange payment personally &mdash; the same
+          way every atelier commission is handled today.
+        </div>
+
+        <div class="checkout-field" style="margin-top: var(--space-4); margin-bottom: 0;">
+          <button type="submit" class="btn-primary cart-summary-btn">Place Order Request</button>
+        </div>
+      </form>
+
+      <aside class="cart-page-summary-wrap" id="checkoutSummary" aria-label="Order summary"></aside>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUDE:site-footer -->
+
+<script src="js/ui.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>
