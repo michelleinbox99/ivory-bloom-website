@@ -15,10 +15,14 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: inherit;
+  color: var(--white); /* over transparent header / dark hero */
   transition: color var(--transition-fast);
 }
-.cart-toggle:hover { color: var(--brass); }
+header.scrolled .cart-toggle,
+body.solid-header .cart-toggle { color: var(--espresso); }
+.cart-toggle:hover,
+header.scrolled .cart-toggle:hover,
+body.solid-header .cart-toggle:hover { color: var(--brass); }
 .cart-toggle:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; border-radius: 2px; }
 .cart-bag-icon { width: 22px; height: 22px; display: block; }
 

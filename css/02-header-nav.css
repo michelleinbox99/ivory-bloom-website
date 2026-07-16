@@ -97,8 +97,9 @@ header.scrolled .header-trust-div { background: rgba(51,37,30,0.3); }
 
 /* Below this, the full nav links + trust badge no longer both fit -
    hide the badge here (well above the 860px nav/hamburger switch) so
-   there's no squeeze zone where they'd overlap or overflow. */
-@media (max-width: 1260px) {
+   there's no squeeze zone where they'd overlap or overflow.
+   1340px accounts for the 44px cart icon added in the header actions. */
+@media (max-width: 1340px) {
   .header-trust { display: none; }
 }
 
