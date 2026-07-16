@@ -22,10 +22,11 @@
       url: 'collections/flower-girl-headband.html',
       description: 'A handcrafted floral heirloom designed for the little moments that become lifelong memories.',
       variants: [
-        { name: 'Ivory Classic' },
-        { name: 'Blush Garden' },
-        { name: 'Champagne Bloom' }
+        { name: 'Ivory' },
+        { name: 'Blush' },
+        { name: 'Sage' }
       ],
+      ribbons: ['Silk Ribbon', 'Velvet Ribbon'],
       sizes: ['Toddler', 'Child', 'Custom'],
       personalizable: true,
       inventory: true

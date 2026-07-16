@@ -24,7 +24,7 @@
   "sku": "flower-girl-headband-001",
   "category": "Flower Girl Collection",
   "image": "https://ivoryandbloom.shop/images/flowergirl-set.jpg",
-  "description": "A handcrafted floral heirloom headband for flower girls, personalized with her name and your wedding date. Available in Ivory Classic, Blush Garden, and Champagne Bloom; Toddler, Child, or Custom sizing.",
+  "description": "A handcrafted floral heirloom headband for flower girls, personalized with her name, your wedding date, and a handwritten gift note. Ivory, Blush, or Sage flower palette; silk or velvet ribbon; Toddler, Child, or Custom sizing.",
   "brand": { "@type": "Brand", "name": "Ivory & Bloom Atelier" },
   "offers": {
     "@type": "Offer",
@@ -122,12 +122,22 @@
         </div>
         <p class="pdp-desc">A handcrafted floral heirloom designed for the little moments that become lifelong memories.</p>
 
+        <h2 class="pdp-customize-title">Customize Your <em>Heirloom</em></h2>
+
         <fieldset class="pdp-options">
-          <legend>Color</legend>
+          <legend>Flower Palette</legend>
           <div class="pdp-pills">
-            <label class="pdp-pill"><input type="radio" name="pdp-color" value="Ivory Classic" checked>Ivory Classic</label>
-            <label class="pdp-pill"><input type="radio" name="pdp-color" value="Blush Garden">Blush Garden</label>
-            <label class="pdp-pill"><input type="radio" name="pdp-color" value="Champagne Bloom">Champagne Bloom</label>
+            <label class="pdp-pill"><input type="radio" name="pdp-palette" value="Ivory" checked>Ivory</label>
+            <label class="pdp-pill"><input type="radio" name="pdp-palette" value="Blush">Blush</label>
+            <label class="pdp-pill"><input type="radio" name="pdp-palette" value="Sage">Sage</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="pdp-options">
+          <legend>Ribbon</legend>
+          <div class="pdp-pills">
+            <label class="pdp-pill"><input type="radio" name="pdp-ribbon" value="Silk Ribbon" checked>Silk</label>
+            <label class="pdp-pill"><input type="radio" name="pdp-ribbon" value="Velvet Ribbon">Velvet</label>
           </div>
         </fieldset>
 
@@ -150,6 +160,10 @@
           <div class="pdp-field">
             <label for="pdpWeddingDate">Wedding Date</label>
             <input type="text" id="pdpWeddingDate" maxlength="20" placeholder="MM / DD / YYYY" autocomplete="off">
+          </div>
+          <div class="pdp-field">
+            <label for="pdpGiftNote">Gift Note</label>
+            <textarea id="pdpGiftNote" rows="3" maxlength="200" placeholder="A few words, written by hand on our note card"></textarea>
           </div>
         </div>
 

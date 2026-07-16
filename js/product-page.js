@@ -26,12 +26,16 @@
 
   function composedVariant() {
     var parts = [];
-    if (picked('pdp-color')) parts.push(picked('pdp-color'));
-    if (picked('pdp-size')) parts.push(picked('pdp-size'));
+    /* Every checked radio across the option fieldsets, in page order —
+       palette, ribbon, size, and any group added later. */
+    var checked = root.querySelectorAll('.pdp-options input[type="radio"]:checked');
+    for (var i = 0; i < checked.length; i++) parts.push(checked[i].value);
     var girl = fieldVal('pdpFlowerGirlName');
     var date = fieldVal('pdpWeddingDate');
+    var note = fieldVal('pdpGiftNote');
     if (girl) parts.push('For ' + girl);
     if (date) parts.push(date);
+    if (note) parts.push('Gift note: “' + note + '”');
     return parts.join(' · ');
   }
 
