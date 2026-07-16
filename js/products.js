@@ -44,6 +44,57 @@
       inventory: true
     },
     {
+      id: 'proposal-box-signature',
+      name: 'Signature Proposal Box',
+      category: 'Bridesmaid Collection',
+      price: 52,
+      image: 'images/bridesmaids-pastel.jpg',
+      url: 'collections/proposal-box.html',
+      description: 'The "will you be my bridesmaid?" moment, boxed — a keepsake box in your palette, ready to build with handmade touches.',
+      variants: [
+        { name: 'Ivory' },
+        { name: 'Blush' },
+        { name: 'Sage' }
+      ],
+      inventory: true
+    },
+    {
+      id: 'proposal-addon-candle',
+      name: 'Handmade Candle',
+      category: 'Proposal Box Add-Ons',
+      price: 14,
+      image: 'images/insta-1.jpg',
+      url: 'collections/proposal-box.html',
+      description: 'Hand-poured soy candle in an amber glass jar.',
+      variants: [{ name: 'Standard' }],
+      addon: true,
+      inventory: true
+    },
+    {
+      id: 'proposal-addon-mug',
+      name: 'Personalized Mug',
+      category: 'Proposal Box Add-Ons',
+      price: 18,
+      image: 'images/insta-2.jpg',
+      url: 'collections/proposal-box.html',
+      description: 'Ceramic mug hand-lettered with her name.',
+      variants: [{ name: 'Standard' }],
+      addon: true,
+      inventory: true
+    },
+    {
+      id: 'proposal-addon-flowers',
+      name: 'Everlasting Flower Arrangement',
+      category: 'Proposal Box Add-Ons',
+      price: 22,
+      image: 'images/insta-4.jpg',
+      url: 'collections/proposal-box.html',
+      description: 'A small hand-shaped arrangement that never wilts.',
+      variants: [{ name: 'Standard' }],
+      addon: true,
+      inventory: true
+    },
+    {
       id: 'flower-girl-set-ivory-garden',
       name: 'Ivory Garden Flower Girl Set',
       category: 'Flower Girl Sets',

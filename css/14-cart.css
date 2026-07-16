@@ -841,6 +841,83 @@ body.cart-open { overflow: hidden; }
 .pdp-gift-price { color: var(--terracotta-rose); letter-spacing: 0.05em; }
 .btn-gift:hover .pdp-gift-price, .btn-gift.is-added .pdp-gift-price { color: inherit; }
 
+/* Build-your-box add-on rows */
+.pdp-addons { display: flex; flex-direction: column; gap: 10px; margin-bottom: var(--space-3); }
+.pdp-addon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 56px;
+  padding: 12px 16px;
+  border: 1px solid var(--border-light);
+  border-radius: 2px;
+  background: var(--white);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+.pdp-addon:hover { border-color: var(--brass); }
+.pdp-addon input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+.pdp-addon:has(input:checked) {
+  border-color: var(--brass);
+  background: var(--parchment);
+  box-shadow: inset 0 0 0 1px var(--brass);
+}
+.pdp-addon:has(input:focus-visible) { outline: 2px solid var(--brass); outline-offset: 2px; }
+.pdp-addon-plus {
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--border-light);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--terracotta-rose);
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+.pdp-addon:has(input:checked) .pdp-addon-plus {
+  background: var(--brass);
+  border-color: var(--brass);
+  color: var(--white);
+  transform: rotate(45deg); /* + becomes x, signaling "tap to remove" */
+}
+.pdp-addon-meta { flex: 1; min-width: 0; }
+.pdp-addon-name { font-size: var(--text-base); font-weight: 400; color: var(--espresso); }
+.pdp-addon-desc { font-size: var(--text-sm); font-weight: 300; color: var(--text-muted); margin-top: 1px; }
+.pdp-addon-price { flex: 0 0 auto; font-size: var(--text-sm); color: var(--terracotta-rose); }
+
+.pdp-box-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  max-width: 380px;
+  padding: 12px 0;
+  margin-bottom: var(--space-2);
+  border-top: 1px solid var(--linen);
+  font-size: var(--text-sm);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.pdp-box-total strong {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--espresso);
+}
+
 .pdp-lovenote {
   max-width: 640px;
   margin: 0 auto;

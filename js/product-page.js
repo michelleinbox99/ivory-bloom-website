@@ -30,7 +30,7 @@
        palette, ribbon, size, and any group added later. */
     var checked = root.querySelectorAll('.pdp-options input[type="radio"]:checked');
     for (var i = 0; i < checked.length; i++) parts.push(checked[i].value);
-    var girl = fieldVal('pdpFlowerGirlName');
+    var girl = fieldVal('pdpFlowerGirlName') || fieldVal('pdpRecipientName');
     var date = fieldVal('pdpWeddingDate');
     var note = fieldVal('pdpGiftNote');
     if (girl) parts.push('For ' + girl);
@@ -51,13 +51,47 @@
     return true;
   }
 
+  /* Build-your-box add-ons: checkboxes marked data-pdp-addon="<product-id>".
+     Checked add-ons ride along with the main Add to Cart as their own
+     line items, and the [data-pdp-total] readout tracks the running total. */
+  function checkedAddons() {
+    return root.querySelectorAll('input[data-pdp-addon]:checked');
+  }
+
+  function refreshTotal(baseId) {
+    var readout = root.querySelector('[data-pdp-total]');
+    if (!readout || !window.IvoryBloom) return;
+    var base = window.IvoryBloom.getProduct(baseId);
+    var total = base ? base.price : 0;
+    var boxes = checkedAddons();
+    for (var i = 0; i < boxes.length; i++) {
+      var p = window.IvoryBloom.getProduct(boxes[i].getAttribute('data-pdp-addon'));
+      if (p) total += p.price;
+    }
+    readout.textContent = window.IBCart.format(total);
+  }
+
   var addBtn = root.querySelector('[data-pdp-add]');
   if (addBtn) {
+    var baseId = addBtn.getAttribute('data-pdp-add');
     addBtn.addEventListener('click', function () {
       if (!flashAdded(addBtn, 'Added to Your Collection')) return;
-      window.IBCart.add(addBtn.getAttribute('data-pdp-add'), composedVariant(), 1);
+      window.IBCart.add(baseId, composedVariant(), 1);
+      var boxes = checkedAddons();
+      for (var i = 0; i < boxes.length; i++) {
+        var id = boxes[i].getAttribute('data-pdp-addon');
+        var forName = fieldVal('pdpFlowerGirlName') || fieldVal('pdpRecipientName');
+        var variant = (id === 'proposal-addon-mug' && forName) ? 'For ' + forName : 'Standard';
+        window.IBCart.add(id, variant, 1);
+      }
       setTimeout(window.IBCart.openDrawer, 800);
     });
+
+    var addonBoxes = root.querySelectorAll('input[data-pdp-addon]');
+    for (var b = 0; b < addonBoxes.length; b++) {
+      addonBoxes[b].addEventListener('change', function () { refreshTotal(baseId); });
+    }
+    refreshTotal(baseId);
   }
 
   var giftBtn = root.querySelector('[data-pdp-gift]');
