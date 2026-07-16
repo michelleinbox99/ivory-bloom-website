@@ -97,6 +97,26 @@
 
   function round2(n) { return Math.round(n * 100) / 100; }
 
+  /* Shipping estimate from IB_CONFIG.shipping (flat rate with a
+     free-shipping threshold). Returns null when no config is
+     present, in which case the UI says "Calculated at checkout". */
+  function getShipping(subtotal) {
+    var cfg = (window.IB_CONFIG && window.IB_CONFIG.shipping) || null;
+    if (!cfg || subtotal <= 0) return null;
+    return subtotal >= cfg.freeThreshold ? 0 : cfg.flatRate;
+  }
+
+  /* "Arrives Aug 4 – Aug 18" from lead time + transit windows */
+  function deliveryEstimate() {
+    var cfg = (window.IB_CONFIG && window.IB_CONFIG.shipping) || null;
+    if (!cfg || !cfg.leadTimeDays) return '';
+    var soon = new Date(), late = new Date();
+    soon.setDate(soon.getDate() + cfg.leadTimeDays[0] + cfg.transitDays[0]);
+    late.setDate(late.getDate() + cfg.leadTimeDays[1] + cfg.transitDays[1]);
+    var f = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' });
+    return f.format(soon) + ' – ' + f.format(late);
+  }
+
   function getTotals() {
     var subtotal = 0, count = 0;
     var hydrated = getItems();
@@ -105,8 +125,11 @@
       count += hydrated[i].qty;
     }
     subtotal = round2(subtotal);
-    var tax = round2(subtotal * TAX_RATE);
-    return { subtotal: subtotal, tax: tax, total: round2(subtotal + tax), count: count };
+    var taxRate = (window.IB_CONFIG && window.IB_CONFIG.taxRate) || TAX_RATE;
+    var tax = round2(subtotal * taxRate);
+    var shipping = getShipping(subtotal);
+    var total = round2(subtotal + tax + (shipping || 0));
+    return { subtotal: subtotal, tax: tax, shipping: shipping, total: total, count: count };
   }
 
   function add(id, variant, qty) {
@@ -277,14 +300,27 @@
       ? '<a href="' + ROOT + 'cart.html" class="btn-outline-dark cart-summary-btn">Review Collection</a>' +
         '<a href="' + ROOT + 'checkout.html" class="btn-primary cart-summary-btn">Proceed to Checkout</a>'
       : '<a href="' + ROOT + 'checkout.html" class="btn-primary cart-summary-btn">Proceed to Checkout</a>';
+    var shipRow = t.shipping === null
+      ? '<span class="cart-summary-soft">Calculated at checkout</span>'
+      : (t.shipping === 0
+        ? '<span class="cart-summary-num" style="color: var(--success);">Free</span>'
+        : '<span class="cart-summary-num">' + fmt.format(t.shipping) + '</span>');
+    var freeNote = '';
+    if (t.shipping !== null && t.shipping > 0 && window.IB_CONFIG && window.IB_CONFIG.shipping) {
+      var away = window.IB_CONFIG.shipping.freeThreshold - t.subtotal;
+      if (away > 0) freeNote = '<div class="cart-summary-row"><span class="cart-summary-soft">' +
+        fmt.format(away) + ' away from free shipping</span><span></span></div>';
+    }
+    var eta = deliveryEstimate();
     return (
       '<div class="cart-summary">' +
       '  <div class="cart-summary-row"><span>Subtotal</span><span class="cart-summary-num">' + fmt.format(t.subtotal) + '</span></div>' +
-      '  <div class="cart-summary-row"><span>Shipping</span><span class="cart-summary-soft">Calculated at checkout</span></div>' +
+      '  <div class="cart-summary-row"><span>Estimated shipping</span>' + shipRow + '</div>' + freeNote +
       '  <div class="cart-summary-row"><span>Estimated tax</span><span class="cart-summary-num">' + fmt.format(t.tax) + '</span></div>' +
       '  <div class="cart-summary-row cart-summary-total"><span>Total</span><span class="cart-summary-num">' + fmt.format(t.total) + '</span></div>' +
       '  <div class="cart-summary-actions">' + checkoutBtn + '</div>' +
-      '  <p class="cart-summary-note">Each piece is made by hand, one at a time. Current lead time: 2&ndash;3 weeks.</p>' +
+      '  <p class="cart-summary-note">Each piece is made by hand, one at a time.' +
+      (eta ? ' Estimated arrival: ' + eta + '.' : ' Current lead time: 2&ndash;3 weeks.') + '</p>' +
       '</div>'
     );
   }
