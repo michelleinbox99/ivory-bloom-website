@@ -517,6 +517,9 @@
     getTotals: getTotals,
     openDrawer: openDrawer,
     closeDrawer: closeDrawer,
+    getWishlist: function () { return wishlist.slice(); },
+    inWishlist: inWishlist,
+    toggleWishlist: toggleWishlist,
     format: function (n) { return fmt.format(n); }
   };
 })();

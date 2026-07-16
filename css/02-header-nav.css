@@ -98,9 +98,19 @@ header.scrolled .header-trust-div { background: rgba(51,37,30,0.3); }
 /* Below this, the full nav links + trust badge no longer both fit -
    hide the badge here (well above the 860px nav/hamburger switch) so
    there's no squeeze zone where they'd overlap or overflow.
-   1340px accounts for the 44px cart icon added in the header actions. */
-@media (max-width: 1340px) {
+   1620px accounts for the Shop nav link and the search/wishlist/cart
+   icon cluster added in the header actions. */
+@media (max-width: 1620px) {
   .header-trust { display: none; }
+}
+/* With six nav links plus the icon cluster, tighten link spacing at
+   mid widths so the nav holds one line down to the 860px menu switch. */
+@media (max-width: 1440px) {
+  nav.main-nav { gap: 24px; }
+}
+@media (max-width: 1120px) {
+  nav.main-nav { gap: 16px; }
+  nav.main-nav a { font-size: 11.5px; letter-spacing: 0.1em; }
 }
 
 /* 44x44px touch target (WCAG); the visible bars stay 26px wide, centered */
