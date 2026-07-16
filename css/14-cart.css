@@ -991,6 +991,21 @@ body.cart-open { overflow: hidden; }
   transition: transform 0.9s ease, opacity var(--transition-normal);
 }
 .shop-card:hover .shop-card-img img { transform: scale(1.06); }
+.shop-card-badge {
+  position: absolute;
+  top: 12px; left: 12px;
+  padding: 6px 12px;
+  background: var(--espresso);
+  color: var(--text-cream);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  pointer-events: none;
+}
+.shop-card-badge-new { background: var(--brass); color: var(--white); }
 .shop-card-wish {
   position: absolute;
   top: 12px; right: 12px;

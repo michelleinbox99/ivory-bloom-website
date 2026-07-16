@@ -14,6 +14,12 @@
   var root = document.querySelector('.pdp');
   if (!root || !window.IBCart) return;
 
+  /* Record this product for "Recently Viewed" strips (shop.js) */
+  var pdpAddBtn = root.querySelector('[data-pdp-add]');
+  if (pdpAddBtn && window.IBShop) {
+    window.IBShop.recordView(pdpAddBtn.getAttribute('data-pdp-add'));
+  }
+
   function picked(name) {
     var el = root.querySelector('input[name="' + name + '"]:checked');
     return el ? el.value : '';

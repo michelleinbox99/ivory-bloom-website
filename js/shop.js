@@ -42,11 +42,13 @@
 
   function cardHtml(p) {
     var saved = window.IBCart.inWishlist(p.id, defaultVariant(p));
+    var badge = p.bestseller ? '<span class="shop-card-badge">Best Seller</span>'
+      : (p.isNew ? '<span class="shop-card-badge shop-card-badge-new">New</span>' : '');
     return (
       '<div class="shop-card" data-id="' + esc(p.id) + '">' +
       '  <a href="' + ROOT + esc(p.url) + '" class="shop-card-img">' +
-      '    <img src="' + ROOT + esc(p.image) + '" alt="' + esc(p.name) + '" loading="lazy">' +
-      '  </a>' +
+      '    <img src="' + ROOT + esc(p.image) + '" alt="' + esc(p.altText || p.name) + '" loading="lazy">' +
+      '  </a>' + badge +
       '  <button class="shop-card-wish' + (saved ? ' is-saved' : '') + '" data-wish-toggle="' + esc(p.id) + '"' +
       '    aria-label="' + (saved ? 'Remove from wishlist' : 'Save to wishlist') + '" aria-pressed="' + saved + '">' +
       (saved ? '&#10084;' : '&#9825;') +
@@ -105,6 +107,8 @@
       if (state.sort === 'price-asc') list = list.slice().sort(function (a, b) { return a.price - b.price; });
       else if (state.sort === 'price-desc') list = list.slice().sort(function (a, b) { return b.price - a.price; });
       else if (state.sort === 'name') list = list.slice().sort(function (a, b) { return a.name.localeCompare(b.name); });
+      else if (state.sort === 'best') list = list.slice().sort(function (a, b) { return (b.bestseller ? 1 : 0) - (a.bestseller ? 1 : 0); });
+      else if (state.sort === 'new') list = list.slice().sort(function (a, b) { return (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0); });
       renderCards(grid, list,
         '<p class="shop-empty">No pieces in this collection yet &mdash; <a href="' + ROOT + 'index.html#consultation">ask about a custom commission</a>.</p>');
       var count = document.getElementById('shopCount');
@@ -171,7 +175,9 @@
         return;
       }
       var prods = sellable().filter(function (p) {
-        return (p.name + ' ' + p.category + ' ' + p.description).toLowerCase().indexOf(q) > -1;
+        var hay = p.name + ' ' + p.category + ' ' + (p.collection || '') + ' ' +
+          p.description + ' ' + (p.tags ? p.tags.join(' ') : '');
+        return hay.toLowerCase().indexOf(q) > -1;
       });
       var pages = PAGES.filter(function (pg) {
         return (pg.title + ' ' + pg.words).toLowerCase().indexOf(q) > -1;
@@ -232,19 +238,59 @@
       '</div>');
   }
 
-  /* ---------- homepage featured ---------- */
+  /* ---------- homepage featured (best sellers first) ---------- */
 
   function initFeatured() {
     var mount = document.getElementById('featuredProducts');
     if (!mount) return;
-    renderCards(mount, sellable().slice(0, 3));
+    var best = sellable().filter(function (p) { return p.bestseller; });
+    var rest = sellable().filter(function (p) { return !p.bestseller; });
+    renderCards(mount, best.concat(rest).slice(0, 3));
   }
+
+  /* ---------- recently viewed ---------- */
+
+  var RECENT_KEY = 'ib_recent_v1';
+
+  function getRecent() {
+    try { return JSON.parse(localStorage.getItem(RECENT_KEY)) || []; }
+    catch (e) { return []; }
+  }
+
+  /* Called by product-page.js when a PDP is opened */
+  function recordView(id) {
+    var list = getRecent().filter(function (x) { return x !== id; });
+    list.unshift(id);
+    try { localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, 8))); } catch (e) {}
+  }
+
+  function initRecent() {
+    var mount = document.getElementById('recentlyViewed');
+    if (!mount) return;
+    var exclude = mount.getAttribute('data-exclude');
+    var list = [];
+    getRecent().forEach(function (id) {
+      if (id === exclude) return;
+      var p = window.IvoryBloom.getProduct(id);
+      if (p && !p.addon) list.push(p);
+    });
+    var section = mount.closest('section');
+    if (!list.length) {
+      if (section) section.hidden = true;
+      return;
+    }
+    if (section) section.hidden = false;
+    renderCards(mount, list.slice(0, 3));
+  }
+
+  window.IBShop = { recordView: recordView };
 
   function init() {
     initShop();
     initSearch();
     renderWishlist();
     initFeatured();
+    initRecent();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
