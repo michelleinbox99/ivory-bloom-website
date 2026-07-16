@@ -3,6 +3,21 @@
 Vanilla JS/CSS cart matching the site's zero-dependency static architecture.
 No build tooling, no npm — ships as plain files to Apache shared hosting.
 
+## Boutique layer (Phase 8)
+
+`js/shop.js` renders catalog cards (one shared renderer) into whichever
+hook the page provides: `#shopGrid` (/shop.html, with collection filter
+pills + sort), `#searchPage` (/search.html, instant search over products
+and a static page index, `?q=` supported), `#wishlistGrid`
+(/wishlist.html), `#featuredProducts` (homepage Signature Pieces).
+Wishlist state is shared through `IBCart.getWishlist / inWishlist /
+toggleWishlist`. Header carries Shop nav link + search/wishlist/cart
+icons; footer links Shop, Shipping & Returns (/shipping-returns.html),
+and Privacy (/privacy.html). PDPs: flower-girl-headband.html (options +
+personalization) and proposal-box.html (build-your-box add-ons via
+`data-pdp-addon` checkboxes + live `data-pdp-total`). No /account —
+requires a backend; revisit at WooCommerce migration.
+
 ## Files
 
 | File | Role |
