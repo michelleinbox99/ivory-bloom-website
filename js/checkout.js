@@ -104,7 +104,8 @@
       address: form.address.value.trim(),
       city: form.city.value.trim(),
       state: form.state.value.trim(),
-      zip: form.zip.value.trim()
+      zip: form.zip.value.trim(),
+      noteForMichelle: form.notes ? form.notes.value.trim() : ''
     };
   }
 

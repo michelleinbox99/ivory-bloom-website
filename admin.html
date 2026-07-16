@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atelier Admin — Product Editor (local tool)</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root { --espresso:#33251E; --ink:#4A3B33; --rose:#9C7360; --brass:#C59F8B; --parchment:#FAF6F3; --linen:#F1E5DE; --border:#CBBBA9; --error:#8A4137; --success:#465B3C; }
+  * { box-sizing: border-box; }
+  body { font-family: Georgia, serif; background: var(--parchment); color: var(--ink); margin: 0; padding: 24px; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  h1 { font-weight: 400; color: var(--espresso); margin: 0 0 4px; }
+  .warn { background: #FBEEEC; border: 1px solid var(--error); border-radius: 2px; padding: 12px 16px; font-size: 14px; margin: 16px 0 24px; line-height: 1.6; }
+  .grid { display: grid; grid-template-columns: 340px 1fr; gap: 24px; align-items: start; }
+  @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+  .panel { background: #fff; border: 1px solid var(--linen); border-radius: 2px; padding: 18px; }
+  .plist { list-style: none; margin: 0; padding: 0; max-height: 70vh; overflow-y: auto; }
+  .plist li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 9px 6px; border-bottom: 1px solid var(--linen); font-size: 14px; cursor: pointer; }
+  .plist li:hover { background: var(--parchment); }
+  .plist li.active { background: var(--linen); }
+  .plist .price { color: var(--rose); white-space: nowrap; }
+  .plist .addon-tag { font-size: 11px; color: #8A7E74; }
+  label { display: block; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #8A7E74; margin: 14px 0 4px; font-family: Verdana, sans-serif; }
+  input, textarea, select { width: 100%; padding: 9px 10px; border: 1px solid var(--border); border-radius: 2px; font-family: Georgia, serif; font-size: 15px; color: var(--espresso); background: #fff; }
+  textarea { resize: vertical; }
+  input:focus, textarea:focus { outline: 2px solid var(--brass); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .btn { display: inline-block; margin: 18px 8px 0 0; padding: 12px 24px; border: 1px solid var(--espresso); border-radius: 2px; background: var(--espresso); color: #fff; font-family: Verdana, sans-serif; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
+  .btn.secondary { background: transparent; color: var(--espresso); }
+  .btn.brass { background: var(--brass); border-color: var(--brass); }
+  .btn.danger { background: transparent; border-color: var(--error); color: var(--error); }
+  .hint { font-size: 12.5px; color: #8A7E74; margin-top: 4px; line-height: 1.5; font-family: Verdana, sans-serif; }
+  .status { margin-top: 14px; font-size: 14px; color: var(--success); min-height: 20px; }
+  .imgprev { max-width: 130px; max-height: 160px; display: block; margin-top: 8px; border: 1px solid var(--linen); }
+  details { margin-top: 20px; }
+  summary { cursor: pointer; color: var(--rose); }
+  #output { width: 100%; height: 220px; font-family: Consolas, monospace; font-size: 12px; margin-top: 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Atelier Admin — Product Editor</h1>
+  <p style="margin:0; font-size:14.5px;">Edits the product catalog that powers the Shop, homepage, search, wishlist, and recommendations.</p>
+  <div class="warn"><strong>Local tool — do not upload this file to your website.</strong>
+    How to use: ① edit or add products below → ② click <em>Download products.js</em> → ③ replace the file at <code>js/products.js</code> with the download → ④ upload that one file to Hostinger. The whole site updates automatically.
+    New photos: copy the photo into the <code>images/</code> folder first (use a descriptive filename like <code>blush-satin-scrunchie-set.jpg</code>), then type that filename here and upload the photo along with products.js.</div>
+
+  <div class="grid">
+    <div class="panel">
+      <button class="btn brass" style="margin:0 0 12px; width:100%;" onclick="newProduct()">+ Add New Product</button>
+      <ul class="plist" id="plist"></ul>
+    </div>
+
+    <div class="panel">
+      <form id="pform" onsubmit="return false;">
+        <div class="row">
+          <div><label>Product ID (no spaces — becomes the SKU basis)</label><input id="f_id" placeholder="satin-hair-ribbon-set"></div>
+          <div><label>Price (USD)</label><input id="f_price" type="number" step="0.01" min="0"></div>
+        </div>
+        <label>Product Name</label><input id="f_name" placeholder="Satin Hair Ribbon Set">
+        <div class="row">
+          <div><label>Category (groups the shop filter pills)</label><input id="f_category" list="cats"><datalist id="cats"></datalist></div>
+          <div><label>Collection (marketing grouping)</label><input id="f_collection"></div>
+        </div>
+        <div class="row">
+          <div>
+            <label>Photo filename (inside images/)</label><input id="f_image" placeholder="images/my-photo.jpg" oninput="preview()">
+            <img id="imgprev" class="imgprev" alt="" hidden>
+          </div>
+          <div><label>Photo alt text (describe the photo for accessibility)</label><textarea id="f_alt" rows="3"></textarea></div>
+        </div>
+        <label>Short description (shown on cards and in search)</label><textarea id="f_short" rows="2"></textarea>
+        <label>Story (editorial copy for future product pages)</label><textarea id="f_story" rows="2"></textarea>
+        <div class="row">
+          <div><label>Colorways / variants (comma-separated)</label><input id="f_variants" placeholder="Ivory, Blush, Sage"></div>
+          <div><label>Search tags (comma-separated)</label><input id="f_tags" placeholder="bridesmaid, satin, gift"></div>
+        </div>
+        <div class="row3">
+          <div><label>Page it links to</label><input id="f_url" placeholder="collections/bridesmaid-collection.html"></div>
+          <div><label>Badge</label>
+            <select id="f_badge"><option value="">None</option><option value="bestseller">Best Seller</option><option value="new">New</option></select>
+          </div>
+          <div><label>Type</label>
+            <select id="f_addon"><option value="">Sellable (shows in shop)</option><option value="addon">Add-on (hidden from grids)</option></select>
+          </div>
+        </div>
+        <button class="btn" onclick="saveProduct()">Save Product</button>
+        <button class="btn danger" onclick="deleteProduct()" id="delBtn" hidden>Delete</button>
+        <div class="status" id="status" role="status"></div>
+      </form>
+
+      <hr style="border:none; border-top:1px solid var(--linen); margin:22px 0;">
+      <button class="btn brass" onclick="downloadFile()">&#11015; Download products.js</button>
+      <span class="hint">Then replace js/products.js and upload it (plus any new photos) to Hostinger.</span>
+      <details><summary>Or copy the file contents manually</summary><textarea id="output" readonly></textarea></details>
+    </div>
+  </div>
+</div>
+
+<script src="js/products.js"></script>
+<script>
+'use strict';
+var products = (window.IvoryBloom && window.IvoryBloom.products) ? JSON.parse(JSON.stringify(window.IvoryBloom.products)) : [];
+var selected = -1;
+var SHIPPING_NOTE = 'Made to order in Gainesville, Virginia. Current lead time 2–3 weeks, then ships worldwide.';
+
+function esc(s){var d=document.createElement('div');d.textContent=s==null?'':String(s);return d.innerHTML;}
+
+function renderList(){
+  var ul=document.getElementById('plist'); var html='';
+  var cats={};
+  products.forEach(function(p,i){
+    cats[p.category]=1;
+    html+='<li class="'+(i===selected?'active':'')+'" onclick="selectProduct('+i+')">'+
+      '<span>'+esc(p.name)+(p.addon?' <span class="addon-tag">(add-on)</span>':'')+'</span>'+
+      '<span class="price">$'+Number(p.price).toFixed(2)+'</span></li>';
+  });
+  ul.innerHTML=html;
+  document.getElementById('cats').innerHTML=Object.keys(cats).map(function(c){return '<option value="'+esc(c)+'">';}).join('');
+}
+
+function selectProduct(i){
+  selected=i; var p=products[i];
+  document.getElementById('f_id').value=p.id||'';
+  document.getElementById('f_name').value=p.name||'';
+  document.getElementById('f_price').value=p.price!=null?p.price:'';
+  document.getElementById('f_category').value=p.category||'';
+  document.getElementById('f_collection').value=p.collection||'';
+  document.getElementById('f_image').value=p.image||'';
+  document.getElementById('f_alt').value=p.altText||'';
+  document.getElementById('f_short').value=p.shortDescription||p.description||'';
+  document.getElementById('f_story').value=p.story||'';
+  document.getElementById('f_variants').value=(p.variants||[]).map(function(v){return v.name;}).join(', ');
+  document.getElementById('f_tags').value=(p.tags||[]).join(', ');
+  document.getElementById('f_url').value=p.url||'';
+  document.getElementById('f_badge').value=p.bestseller?'bestseller':(p.isNew?'new':'');
+  document.getElementById('f_addon').value=p.addon?'addon':'';
+  document.getElementById('delBtn').hidden=false;
+  document.getElementById('status').textContent='';
+  preview(); renderList();
+}
+
+function newProduct(){
+  selected=-1;
+  document.getElementById('pform').reset();
+  document.getElementById('delBtn').hidden=true;
+  document.getElementById('status').textContent='Fill in the form, then Save Product.';
+  document.getElementById('imgprev').hidden=true;
+  renderList();
+}
+
+function preview(){
+  var img=document.getElementById('imgprev'); var v=document.getElementById('f_image').value.trim();
+  if(v){ img.src=v; img.hidden=false; img.onerror=function(){img.hidden=true;}; } else img.hidden=true;
+}
+
+function saveProduct(){
+  var id=document.getElementById('f_id').value.trim();
+  var name=document.getElementById('f_name').value.trim();
+  var price=parseFloat(document.getElementById('f_price').value);
+  var image=document.getElementById('f_image').value.trim();
+  var st=document.getElementById('status');
+  if(!id||!name||isNaN(price)||!image){ st.style.color='#8A4137'; st.textContent='ID, name, price, and photo filename are required.'; return; }
+  if(/\s/.test(id)){ st.style.color='#8A4137'; st.textContent='Product ID cannot contain spaces (use-dashes-instead).'; return; }
+  var badge=document.getElementById('f_badge').value;
+  var existing = selected>-1 ? products[selected] : {};
+  var p={
+    id:id,
+    sku: existing.sku || ('IB-' + id.toUpperCase().replace(/[^A-Z0-9]+/g,'-').slice(0,16)),
+    slug: existing.slug || id,
+    name:name,
+    collection:document.getElementById('f_collection').value.trim()||document.getElementById('f_category').value.trim(),
+    category:document.getElementById('f_category').value.trim()||'Uncategorized',
+    price:price,
+    url:document.getElementById('f_url').value.trim()||'shop.html',
+    image:image,
+    altText:document.getElementById('f_alt').value.trim()||name,
+    shortDescription:document.getElementById('f_short').value.trim(),
+    story:document.getElementById('f_story').value.trim(),
+    shipping: existing.shipping || SHIPPING_NOTE,
+    variants:document.getElementById('f_variants').value.split(',').map(function(s){return s.trim();}).filter(Boolean).map(function(n){return {name:n};}),
+    tags:document.getElementById('f_tags').value.split(',').map(function(s){return s.trim();}).filter(Boolean),
+    inventory:true
+  };
+  if(!p.variants.length) p.variants=[{name:'Standard'}];
+  ['seoTitle','seoDescription','features','materials','care','personalization','ribbons','sizes','personalizable'].forEach(function(k){ if(existing[k]!==undefined) p[k]=existing[k]; });
+  if(badge==='bestseller') p.bestseller=true;
+  if(badge==='new') p.isNew=true;
+  if(document.getElementById('f_addon').value==='addon') p.addon=true;
+  if(selected>-1) products[selected]=p; else { products.push(p); selected=products.length-1; }
+  st.style.color='#465B3C'; st.textContent='Saved. Now click "Download products.js" and replace the file on your site.';
+  document.getElementById('delBtn').hidden=false;
+  renderList(); generate();
+}
+
+function deleteProduct(){
+  if(selected<0) return;
+  if(!confirm('Delete "'+products[selected].name+'" from the catalog?')) return;
+  products.splice(selected,1); selected=-1;
+  document.getElementById('pform').reset();
+  document.getElementById('delBtn').hidden=true;
+  document.getElementById('status').textContent='Deleted. Download products.js to make it real.';
+  renderList(); generate();
+}
+
+function generate(){
+  var body=JSON.stringify(products,null,2)
+    .replace(/’/g,"\\u2019").replace(/“/g,"\\u201c").replace(/”/g,"\\u201d").replace(/–/g,"\\u2013").replace(/—/g,"\\u2014");
+  var file='/* ============================================================\n'+
+    '   Ivory & Bloom Atelier — Product Catalog\n'+
+    '   GENERATED by admin.html on '+new Date().toISOString().slice(0,10)+' — edit via admin.html\n'+
+    '   or by hand; structure is WooCommerce-migration-ready.\n'+
+    '   ============================================================ */\n\n'+
+    '(function () {\n  \'use strict\';\n\n'+
+    '  var products = '+body.replace(/\n/g,'\n  ')+';\n\n'+
+    '  /* Back-fill description (used by cart/search) from shortDescription */\n'+
+    '  for (var i = 0; i < products.length; i++) {\n'+
+    '    if (!products[i].description) products[i].description = products[i].shortDescription || \'\';\n'+
+    '  }\n\n'+
+    '  function getProduct(id) {\n'+
+    '    for (var j = 0; j < products.length; j++) {\n'+
+    '      if (products[j].id === id) return products[j];\n'+
+    '    }\n    return null;\n  }\n\n'+
+    '  window.IvoryBloom = window.IvoryBloom || {};\n'+
+    '  window.IvoryBloom.products = products;\n'+
+    '  window.IvoryBloom.getProduct = getProduct;\n'+
+    '})();\n';
+  document.getElementById('output').value=file;
+  return file;
+}
+
+function downloadFile(){
+  var blob=new Blob([generate()],{type:'application/javascript'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='products.js';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+renderList(); generate();
+</script>
+</body>
+</html>
