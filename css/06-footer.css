@@ -62,8 +62,9 @@
   position: relative; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px;
   border-top: 1px solid #DCCDBF; padding-top: 26px;
 }
-.fq-email { font-family: var(--font-display); font-style: italic; font-size: 15px; color: #8A7E74; justify-self: start; transition: color 0.3s ease; }
-.fq-email:hover { color: var(--terracotta-rose); }
+.fq-email { display: flex; align-items: center; color: #8A7E74; justify-self: start; transition: color 0.3s ease, transform 0.3s ease; }
+.fq-email:hover { color: var(--terracotta-rose); transform: translateY(-2px); }
+.fq-email svg { width: 15px; height: 15px; }
 .fq-icons { display: flex; align-items: center; gap: 12px; justify-self: center; }
 .fq-icons a { color: #8A7E74; display: flex; transition: color 0.3s ease, transform 0.3s ease; }
 .fq-icons a:hover { color: var(--terracotta-rose); transform: translateY(-2px); }
