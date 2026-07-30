@@ -75,34 +75,6 @@ nav.main-nav a:hover::after { width: 100%; }
 header.scrolled .btn-header-cta { color: var(--espresso); border-color: var(--espresso); }
 .btn-header-cta:hover { background: var(--brass); border-color: var(--brass); color: var(--white); }
 
-/* Same design language as .btn-header-cta (border, transparent fill, uppercase
-   11.5px/0.15em type) - width simply grows with the extra content instead of
-   the fixed-width button label. */
-.header-trust {
-  display: flex; align-items: center; gap: 11px;
-  font-size: 10px; letter-spacing: 0.11em; text-transform: uppercase;
-  color: var(--white);
-  background: rgba(20,15,12,0.18);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,0.55);
-  border-radius: 2px;
-  padding: 12px 21px;
-  transition: color 0.35s ease, border-color 0.35s ease, background 0.35s ease;
-  white-space: nowrap;
-}
-header.scrolled .header-trust { color: var(--espresso); border-color: var(--espresso); background: transparent; backdrop-filter: none; }
-.header-trust-item i { font-style: normal; }
-.header-trust-div { width: 1px; height: 12px; background: rgba(255,255,255,0.4); flex-shrink: 0; }
-header.scrolled .header-trust-div { background: rgba(51,37,30,0.3); }
-
-/* Below this, the full nav links + trust badge no longer both fit -
-   hide the badge here (well above the 860px nav/hamburger switch) so
-   there's no squeeze zone where they'd overlap or overflow.
-   1620px accounts for the Shop nav link and the search/wishlist/cart
-   icon cluster added in the header actions. */
-@media (max-width: 1620px) {
-  .header-trust { display: none; }
-}
 /* With six nav links plus the icon cluster, tighten link spacing at
    mid widths so the nav holds one line down to the 860px menu switch. */
 @media (max-width: 1440px) {
