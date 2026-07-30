@@ -11,6 +11,18 @@
   .hero-nav { bottom: 22px; }
 }
 
+/* Phone widths: logo + header-actions (search/wishlist/cart/menu, 4x44px
+   touch targets) no longer fit side by side once nav.main-nav is hidden.
+   Shrink the logo and drop search/wishlist from the header - both stay
+   one tap away in the mobile menu - so cart and menu remain full-size,
+   reachable touch targets without the row overflowing the viewport. */
+@media (max-width: 600px) {
+  .logo { font-size: 19px; }
+  .logo .tag { display: none; }
+  .header-actions { gap: 8px; }
+  .header-icon-link { display: none; }
+}
+
 a:focus-visible, button:focus-visible, input:focus-visible {
   outline: 2px solid var(--brass); outline-offset: 3px;
 }
